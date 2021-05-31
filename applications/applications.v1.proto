@@ -1,0 +1,36 @@
+syntax = "proto3";
+package gitlab_aggregator.v1;
+option go_package = "github.com/allanger/gitlab-environment-aggregator/api/applications";
+
+/**
+ * Applications services
+*/
+service Applications {  
+  rpc Create(AppName) returns (AppInfo) {}
+  rpc Get(AppName) returns (AppInfo) {}
+  rpc List(EmptyMessage) returns (stream AppInfo) {}
+  rpc Update(AppInfo) returns (AppInfo) {}
+  rpc Delete(AppInfo) returns (EmptyMessage) {}
+}
+
+message EmptyMessage {}
+
+message AppName {
+  string name = 1;
+}
+
+message AppInfo {
+  string id = 1;
+  string name = 2;
+  repeated Contour contour = 3;
+}
+
+message Contour {
+  string name = 1;
+  repeated Service service = 2;
+}
+
+message Service {
+  int64 project = 1;
+  int64 environment = 2;
+}

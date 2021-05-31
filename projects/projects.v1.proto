@@ -1,0 +1,28 @@
+syntax = "proto3";
+package gitlab_aggregator.v1;
+option go_package = "github.com/allanger/gitlab-environment-aggregator/api/projects";
+
+/**
+ * Projects service
+*/
+service Projects {  
+  rpc Get(ProjectID) returns (ProjectInfo) {}
+  rpc List(ProjectName) returns (stream ProjectInfo) {}
+}
+
+message ProjectID {
+  int64 id = 1;
+}
+
+message ProjectName { 
+  string name = 1;
+}
+
+message ProjectInfo {
+  int64 id = 1;
+  string name = 2;
+  string description = 3;
+  string webUrl = 4;
+  string avatarUrl = 5;
+  string readmeUrl = 6;
+}
