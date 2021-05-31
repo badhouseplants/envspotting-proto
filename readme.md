@@ -17,11 +17,13 @@
   
     - [Projects](#gitlab_aggregator.v1.Projects)
   
+- [common/common.proto](#common/common.proto)
+    - [EmptyMessage](#common.EmptyMessage)
+  
 - [applications/applications.v1.proto](#applications/applications.v1.proto)
     - [AppInfo](#gitlab_aggregator.v1.AppInfo)
     - [AppName](#gitlab_aggregator.v1.AppName)
     - [Contour](#gitlab_aggregator.v1.Contour)
-    - [EmptyMessage](#gitlab_aggregator.v1.EmptyMessage)
     - [Service](#gitlab_aggregator.v1.Service)
   
     - [Applications](#gitlab_aggregator.v1.Applications)
@@ -190,6 +192,32 @@ Projects service
 
 
 
+<a name="common/common.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## common/common.proto
+
+
+
+<a name="common.EmptyMessage"></a>
+
+### EmptyMessage
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
 <a name="applications/applications.v1.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -245,16 +273,6 @@ Projects service
 
 
 
-<a name="gitlab_aggregator.v1.EmptyMessage"></a>
-
-### EmptyMessage
-
-
-
-
-
-
-
 <a name="gitlab_aggregator.v1.Service"></a>
 
 ### Service
@@ -286,9 +304,9 @@ Applications services
 | ----------- | ------------ | ------------- | ------------|
 | Create | [AppName](#gitlab_aggregator.v1.AppName) | [AppInfo](#gitlab_aggregator.v1.AppInfo) |  |
 | Get | [AppName](#gitlab_aggregator.v1.AppName) | [AppInfo](#gitlab_aggregator.v1.AppInfo) |  |
-| List | [EmptyMessage](#gitlab_aggregator.v1.EmptyMessage) | [AppInfo](#gitlab_aggregator.v1.AppInfo) stream |  |
+| List | [.common.EmptyMessage](#common.EmptyMessage) | [AppInfo](#gitlab_aggregator.v1.AppInfo) stream |  |
 | Update | [AppInfo](#gitlab_aggregator.v1.AppInfo) | [AppInfo](#gitlab_aggregator.v1.AppInfo) |  |
-| Delete | [AppInfo](#gitlab_aggregator.v1.AppInfo) | [EmptyMessage](#gitlab_aggregator.v1.EmptyMessage) |  |
+| Delete | [AppInfo](#gitlab_aggregator.v1.AppInfo) | [.common.EmptyMessage](#common.EmptyMessage) |  |
 
  
 

@@ -1,19 +1,17 @@
 syntax = "proto3";
 package gitlab_aggregator.v1;
 option go_package = "github.com/allanger/gitlab-environment-aggregator/api/applications";
-
+import "common/common.proto";
 /**
  * Applications services
 */
 service Applications {  
   rpc Create(AppName) returns (AppInfo) {}
   rpc Get(AppName) returns (AppInfo) {}
-  rpc List(EmptyMessage) returns (stream AppInfo) {}
+  rpc List(common.EmptyMessage) returns (stream AppInfo) {}
   rpc Update(AppInfo) returns (AppInfo) {}
-  rpc Delete(AppInfo) returns (EmptyMessage) {}
+  rpc Delete(AppInfo) returns (common.EmptyMessage) {}
 }
-
-message EmptyMessage {}
 
 message AppName {
   string name = 1;
