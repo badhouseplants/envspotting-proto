@@ -33,7 +33,7 @@ message AppName {
 message AppInfo {
   string id = 1; // UUID
   string name = 2; // Application name: Unique string
-  repeated Contour contour = 3; // Map: <contourn name: [services]>
+  repeated Contour contour = 3; // Map: <contour name: [services]>
 }
 
 /**

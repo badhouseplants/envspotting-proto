@@ -8,16 +8,16 @@ option go_package = "github.com/allanger/gitlab-environment-aggregator/api/envir
  * Kinda gitlab proxy
  */
 service Environments {  
-  /// Get environment by ID 
-  rpc Get(EnvID) returns (EnvInfo) {}
-  /// Stream environments by name
-  rpc List(EnvName) returns (stream EnvInfo) {}
+  /// Get Environment by ID 
+  rpc Get(EnvironmentID) returns (EnvironmentInfo) {}
+  /// Stream Environments by name
+  rpc List(EnvironmentName) returns (stream EnvironmentInfo) {}
 }
 
 /**
  * Represents a Gitlab Environment ID
 */
-message EnvID {
+message EnvironmentID {
   int64 projectId = 1; // Gitlab Project ID
   int64 id = 2; // Gitlab Environment Id
 }
@@ -25,7 +25,7 @@ message EnvID {
 /**
  * Represents a Gitlab Environment name
 */
-message EnvName {
+message EnvironmentName {
   int64 projectId = 1; // Gitlab Project ID
   string name = 2; // Gitlab Environment name
 }
@@ -33,7 +33,7 @@ message EnvName {
 /**
  * Represents a Gitlab Environment
 */
-message EnvInfo {
+message EnvironmentInfo {
   int64 id = 1; // Gitlab Environment ID
   string name = 2; // Gitlab Environment name
   string state = 3; // Gitlab Environment state
