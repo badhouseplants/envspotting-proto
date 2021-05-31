@@ -1,34 +1,53 @@
+/// This file has messages for describing applications
 syntax = "proto3";
 package gitlab_aggregator.v1;
 option go_package = "github.com/allanger/gitlab-environment-aggregator/api/applications";
 import "common/common.proto";
+
 /**
- * Applications services
-*/
+ * Service for handling applications
+ */
 service Applications {  
-  rpc Create(AppName) returns (AppInfo) {}
+  /// Use to add a whole new app
+  rpc Create(AppName) returns (AppInfo) {} 
+  /// Use to get app by ProjectID
   rpc Get(AppName) returns (AppInfo) {}
+  /// Use to list all apps in db
   rpc List(common.EmptyMessage) returns (stream AppInfo) {}
+  /// Use to update an app (add/edit contour, edit name)
   rpc Update(AppInfo) returns (AppInfo) {}
+  /// Use to delete an app (❗️not implemented yet❗️)
   rpc Delete(AppInfo) returns (common.EmptyMessage) {}
 }
 
+/**
+ * Represents an application name only 
+*/
 message AppName {
-  string name = 1;
+  string name = 1; // Application name: Unique string
 }
 
+/**
+ * Represents a application 
+*/
 message AppInfo {
-  string id = 1;
-  string name = 2;
-  repeated Contour contour = 3;
+  string id = 1; // UUID
+  string name = 2; // Application name: Unique string
+  repeated Contour contour = 3; // Map: <contourn name: [services]>
 }
 
+/**
+ * Represents a contour (the whole environment) 
+*/
 message Contour {
-  string name = 1;
-  repeated Service service = 2;
+  string name = 1; // String
+  repeated Service service = 2; // Array of maps <projectID:environmentID>
 }
 
+/**
+ * Represents a service
+*/
 message Service {
-  int64 project = 1;
-  int64 environment = 2;
+  int64 project = 1; // Project ID from Gitlab
+  int64 environment = 2; //  Environment ID from Gitlab
 }

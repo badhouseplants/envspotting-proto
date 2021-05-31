@@ -1,28 +1,41 @@
+/// This file has messages for describing gitlab projects
 syntax = "proto3";
 package gitlab_aggregator.v1;
 option go_package = "github.com/allanger/gitlab-environment-aggregator/api/projects";
 
 /**
- * Projects service
-*/
+ * Service for handling projects
+ * Kinda gitlab proxy
+ */
 service Projects {  
+  /// Get project by ID 
   rpc Get(ProjectID) returns (ProjectInfo) {}
+  /// Stream projects by name
   rpc List(ProjectName) returns (stream ProjectInfo) {}
 }
 
+/**
+ * Represents a Gitlab Project ID
+*/
 message ProjectID {
-  int64 id = 1;
+  int64 id = 1; // Gitlab Project ID
 }
 
+/**
+ * Represents a Gitlab Project name
+*/
 message ProjectName { 
-  string name = 1;
+  string name = 1; // Gitlab Project name
 }
 
+/**
+ * Represents a Gitlab Project
+*/
 message ProjectInfo {
-  int64 id = 1;
-  string name = 2;
-  string description = 3;
-  string webUrl = 4;
-  string avatarUrl = 5;
-  string readmeUrl = 6;
+  int64 id = 1; // Gitlab Project ID
+  string name = 2; // Gitlab Project name
+  string description = 3; // Gitlab Project description
+  string webUrl = 4; // Gitlab Project URL
+  string avatarUrl = 5; // Gitlab Project avatar URL
+  string readmeUrl = 6; // // Gitlab Project readme ID
 }

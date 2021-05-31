@@ -1,5 +1,9 @@
+/// This file has messages for reusable common messages
 syntax = "proto3";
 package common;
 option go_package = "github.com/allanger/gitlab-environment-aggregator/models/common";
 
-message EmptyMessage {}
+/**
+ * Represents an empty message 
+*/
+message EmptyMessage {} // Use when no content's needed

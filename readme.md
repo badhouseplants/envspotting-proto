@@ -36,19 +36,19 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## environments/environments.v1.proto
-
+This file has messages for describing gitlab environments
 
 
 <a name="gitlab_aggregator.v1.EnvID"></a>
 
 ### EnvID
-
+Represents a Gitlab Environment ID
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| projectId | [int64](#int64) |  |  |
-| id | [int64](#int64) |  |  |
+| projectId | [int64](#int64) |  | Gitlab Project ID |
+| id | [int64](#int64) |  | Gitlab Environment Id |
 
 
 
@@ -58,21 +58,21 @@
 <a name="gitlab_aggregator.v1.EnvInfo"></a>
 
 ### EnvInfo
-
+Represents a Gitlab Environment
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  |  |
-| name | [string](#string) |  |  |
-| state | [string](#string) |  |  |
-| url | [string](#string) |  |  |
-| ref | [string](#string) |  |  |
-| sha | [string](#string) |  |  |
-| ciStatus | [string](#string) |  |  |
-| userId | [int64](#int64) |  |  |
-| userName | [string](#string) |  |  |
-| updatedAd | [string](#string) |  |  |
+| id | [int64](#int64) |  | Gitlab Environment ID |
+| name | [string](#string) |  | Gitlab Environment name |
+| state | [string](#string) |  | Gitlab Environment state |
+| url | [string](#string) |  | Gitlab Environment external URL |
+| ref | [string](#string) |  | Gitlab Environment commit ref |
+| sha | [string](#string) |  | Gitlab Environment commit SHA |
+| ciStatus | [string](#string) |  | Gitlab Environment Gitlab-CI status |
+| userId | [int64](#int64) |  | Gitlab Environment Gitlab-CI trigger user ID |
+| userName | [string](#string) |  | Gitlab Environment Gitlab-CI trigger user name |
+| updatedAd | [string](#string) |  | Gitlab Environment update time |
 
 
 
@@ -82,13 +82,13 @@
 <a name="gitlab_aggregator.v1.EnvName"></a>
 
 ### EnvName
-
+Represents a Gitlab Environment name
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| projectId | [int64](#int64) |  |  |
-| name | [string](#string) |  |  |
+| projectId | [int64](#int64) |  | Gitlab Project ID |
+| name | [string](#string) |  | Gitlab Environment name |
 
 
 
@@ -104,12 +104,13 @@
 <a name="gitlab_aggregator.v1.Environments"></a>
 
 ### Environments
-Environments services
+Service for handling environments
+Kinda gitlab proxy
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Get | [EnvID](#gitlab_aggregator.v1.EnvID) | [EnvInfo](#gitlab_aggregator.v1.EnvInfo) |  |
-| List | [EnvName](#gitlab_aggregator.v1.EnvName) | [EnvInfo](#gitlab_aggregator.v1.EnvInfo) stream |  |
+| Get | [EnvID](#gitlab_aggregator.v1.EnvID) | [EnvInfo](#gitlab_aggregator.v1.EnvInfo) | Get environment by ID |
+| List | [EnvName](#gitlab_aggregator.v1.EnvName) | [EnvInfo](#gitlab_aggregator.v1.EnvInfo) stream | Stream environments by name |
 
  
 
@@ -119,18 +120,18 @@ Environments services
 <p align="right"><a href="#top">Top</a></p>
 
 ## projects/projects.v1.proto
-
+This file has messages for describing gitlab projects
 
 
 <a name="gitlab_aggregator.v1.ProjectID"></a>
 
 ### ProjectID
-
+Represents a Gitlab Project ID
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  |  |
+| id | [int64](#int64) |  | Gitlab Project ID |
 
 
 
@@ -140,17 +141,17 @@ Environments services
 <a name="gitlab_aggregator.v1.ProjectInfo"></a>
 
 ### ProjectInfo
-
+Represents a Gitlab Project
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  |  |
-| name | [string](#string) |  |  |
-| description | [string](#string) |  |  |
-| webUrl | [string](#string) |  |  |
-| avatarUrl | [string](#string) |  |  |
-| readmeUrl | [string](#string) |  |  |
+| id | [int64](#int64) |  | Gitlab Project ID |
+| name | [string](#string) |  | Gitlab Project name |
+| description | [string](#string) |  | Gitlab Project description |
+| webUrl | [string](#string) |  | Gitlab Project URL |
+| avatarUrl | [string](#string) |  | Gitlab Project avatar URL |
+| readmeUrl | [string](#string) |  | Gitlab Project readme ID |
 
 
 
@@ -160,12 +161,12 @@ Environments services
 <a name="gitlab_aggregator.v1.ProjectName"></a>
 
 ### ProjectName
-
+Represents a Gitlab Project name
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  |  |
+| name | [string](#string) |  | Gitlab Project name |
 
 
 
@@ -181,12 +182,13 @@ Environments services
 <a name="gitlab_aggregator.v1.Projects"></a>
 
 ### Projects
-Projects service
+Service for handling projects
+Kinda gitlab proxy
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Get | [ProjectID](#gitlab_aggregator.v1.ProjectID) | [ProjectInfo](#gitlab_aggregator.v1.ProjectInfo) |  |
-| List | [ProjectName](#gitlab_aggregator.v1.ProjectName) | [ProjectInfo](#gitlab_aggregator.v1.ProjectInfo) stream |  |
+| Get | [ProjectID](#gitlab_aggregator.v1.ProjectID) | [ProjectInfo](#gitlab_aggregator.v1.ProjectInfo) | Get project by ID |
+| List | [ProjectName](#gitlab_aggregator.v1.ProjectName) | [ProjectInfo](#gitlab_aggregator.v1.ProjectInfo) stream | Stream projects by name |
 
  
 
@@ -196,13 +198,13 @@ Projects service
 <p align="right"><a href="#top">Top</a></p>
 
 ## common/common.proto
-
+This file has messages for reusable common messages
 
 
 <a name="common.EmptyMessage"></a>
 
 ### EmptyMessage
-
+Represents an empty message
 
 
 
@@ -222,20 +224,20 @@ Projects service
 <p align="right"><a href="#top">Top</a></p>
 
 ## applications/applications.v1.proto
-
+This file has messages for describing applications
 
 
 <a name="gitlab_aggregator.v1.AppInfo"></a>
 
 ### AppInfo
-
+Represents a application
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| name | [string](#string) |  |  |
-| contour | [Contour](#gitlab_aggregator.v1.Contour) | repeated |  |
+| id | [string](#string) |  | UUID |
+| name | [string](#string) |  | Application name: Unique string |
+| contour | [Contour](#gitlab_aggregator.v1.Contour) | repeated | Map: &lt;contourn name: [services]&gt; |
 
 
 
@@ -245,12 +247,12 @@ Projects service
 <a name="gitlab_aggregator.v1.AppName"></a>
 
 ### AppName
-
+Represents an application name only
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  |  |
+| name | [string](#string) |  | Application name: Unique string |
 
 
 
@@ -260,13 +262,13 @@ Projects service
 <a name="gitlab_aggregator.v1.Contour"></a>
 
 ### Contour
-
+Represents a contour (the whole environment)
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  |  |
-| service | [Service](#gitlab_aggregator.v1.Service) | repeated |  |
+| name | [string](#string) |  | String |
+| service | [Service](#gitlab_aggregator.v1.Service) | repeated | Array of maps &lt;projectID:environmentID&gt; |
 
 
 
@@ -276,13 +278,13 @@ Projects service
 <a name="gitlab_aggregator.v1.Service"></a>
 
 ### Service
-
+Represents a service
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| project | [int64](#int64) |  |  |
-| environment | [int64](#int64) |  |  |
+| project | [int64](#int64) |  | Project ID from Gitlab |
+| environment | [int64](#int64) |  | Environment ID from Gitlab |
 
 
 
@@ -298,15 +300,15 @@ Projects service
 <a name="gitlab_aggregator.v1.Applications"></a>
 
 ### Applications
-Applications services
+Service for handling applications
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [AppName](#gitlab_aggregator.v1.AppName) | [AppInfo](#gitlab_aggregator.v1.AppInfo) |  |
-| Get | [AppName](#gitlab_aggregator.v1.AppName) | [AppInfo](#gitlab_aggregator.v1.AppInfo) |  |
-| List | [.common.EmptyMessage](#common.EmptyMessage) | [AppInfo](#gitlab_aggregator.v1.AppInfo) stream |  |
-| Update | [AppInfo](#gitlab_aggregator.v1.AppInfo) | [AppInfo](#gitlab_aggregator.v1.AppInfo) |  |
-| Delete | [AppInfo](#gitlab_aggregator.v1.AppInfo) | [.common.EmptyMessage](#common.EmptyMessage) |  |
+| Create | [AppName](#gitlab_aggregator.v1.AppName) | [AppInfo](#gitlab_aggregator.v1.AppInfo) | Use to add a whole new app |
+| Get | [AppName](#gitlab_aggregator.v1.AppName) | [AppInfo](#gitlab_aggregator.v1.AppInfo) | Use to get app by ProjectID |
+| List | [.common.EmptyMessage](#common.EmptyMessage) | [AppInfo](#gitlab_aggregator.v1.AppInfo) stream | Use to list all apps in db |
+| Update | [AppInfo](#gitlab_aggregator.v1.AppInfo) | [AppInfo](#gitlab_aggregator.v1.AppInfo) | Use to update an app (add/edit contour, edit name) |
+| Delete | [AppInfo](#gitlab_aggregator.v1.AppInfo) | [.common.EmptyMessage](#common.EmptyMessage) | Use to delete an app (❗️not implemented yet❗️) |
 
  
 
