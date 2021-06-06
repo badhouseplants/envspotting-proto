@@ -1,0 +1,23 @@
+/// This file has messages for describing authorization
+syntax = "proto3";
+package gitlab_aggregator.v1;
+option go_package = "github.com/allanger/gitlab-environment-aggregator/api/authorization";
+import "common/common.proto";
+
+/**
+ * Service for handling authorization
+ */
+service Authorization {  
+  /// Use to sign in
+  rpc SignIn(common.EmptyMessage) returns (common.EmptyMessage) {}
+  /// Use to sign up
+  rpc SignUp(common.EmptyMessage) returns (common.EmptyMessage) {}
+}
+
+/**
+ * Represents the user
+*/
+message UserInfo {
+  string username = 1; // Username: unix-like
+  string password = 2; // Username: unix-like
+}

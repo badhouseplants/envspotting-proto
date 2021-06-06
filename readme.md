@@ -4,9 +4,9 @@
 ## Table of Contents
 
 - [environments/environments.v1.proto](#environments/environments.v1.proto)
-    - [EnvID](#gitlab_aggregator.v1.EnvID)
-    - [EnvInfo](#gitlab_aggregator.v1.EnvInfo)
-    - [EnvName](#gitlab_aggregator.v1.EnvName)
+    - [EnvironmentID](#gitlab_aggregator.v1.EnvironmentID)
+    - [EnvironmentInfo](#gitlab_aggregator.v1.EnvironmentInfo)
+    - [EnvironmentName](#gitlab_aggregator.v1.EnvironmentName)
   
     - [Environments](#gitlab_aggregator.v1.Environments)
   
@@ -28,6 +28,11 @@
   
     - [Applications](#gitlab_aggregator.v1.Applications)
   
+- [authorization/authorization.v1.proto](#authorization/authorization.v1.proto)
+    - [UserInfo](#gitlab_aggregator.v1.UserInfo)
+  
+    - [Authorization](#gitlab_aggregator.v1.Authorization)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -39,9 +44,9 @@
 This file has messages for describing gitlab environments
 
 
-<a name="gitlab_aggregator.v1.EnvID"></a>
+<a name="gitlab_aggregator.v1.EnvironmentID"></a>
 
-### EnvID
+### EnvironmentID
 Represents a Gitlab Environment ID
 
 
@@ -55,9 +60,9 @@ Represents a Gitlab Environment ID
 
 
 
-<a name="gitlab_aggregator.v1.EnvInfo"></a>
+<a name="gitlab_aggregator.v1.EnvironmentInfo"></a>
 
-### EnvInfo
+### EnvironmentInfo
 Represents a Gitlab Environment
 
 
@@ -70,6 +75,7 @@ Represents a Gitlab Environment
 | ref | [string](#string) |  | Gitlab Environment commit ref |
 | sha | [string](#string) |  | Gitlab Environment commit SHA |
 | ciStatus | [string](#string) |  | Gitlab Environment Gitlab-CI status |
+| ciId | [int64](#int64) |  | Gitlab Environment Gitlab-CI ID |
 | userId | [int64](#int64) |  | Gitlab Environment Gitlab-CI trigger user ID |
 | userName | [string](#string) |  | Gitlab Environment Gitlab-CI trigger user name |
 | updatedAd | [string](#string) |  | Gitlab Environment update time |
@@ -79,9 +85,9 @@ Represents a Gitlab Environment
 
 
 
-<a name="gitlab_aggregator.v1.EnvName"></a>
+<a name="gitlab_aggregator.v1.EnvironmentName"></a>
 
-### EnvName
+### EnvironmentName
 Represents a Gitlab Environment name
 
 
@@ -109,8 +115,8 @@ Kinda gitlab proxy
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Get | [EnvID](#gitlab_aggregator.v1.EnvID) | [EnvInfo](#gitlab_aggregator.v1.EnvInfo) | Get environment by ID |
-| List | [EnvName](#gitlab_aggregator.v1.EnvName) | [EnvInfo](#gitlab_aggregator.v1.EnvInfo) stream | Stream environments by name |
+| Get | [EnvironmentID](#gitlab_aggregator.v1.EnvironmentID) | [EnvironmentInfo](#gitlab_aggregator.v1.EnvironmentInfo) | Get Environment by ID |
+| List | [EnvironmentName](#gitlab_aggregator.v1.EnvironmentName) | [EnvironmentInfo](#gitlab_aggregator.v1.EnvironmentInfo) stream | Stream Environments by name |
 
  
 
@@ -237,7 +243,7 @@ Represents a application
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  | UUID |
 | name | [string](#string) |  | Application name: Unique string |
-| contour | [Contour](#gitlab_aggregator.v1.Contour) | repeated | Map: &lt;contourn name: [services]&gt; |
+| contour | [Contour](#gitlab_aggregator.v1.Contour) | repeated | Map: &lt;contour name: [services]&gt; |
 
 
 
@@ -309,6 +315,49 @@ Service for handling applications
 | List | [.common.EmptyMessage](#common.EmptyMessage) | [AppInfo](#gitlab_aggregator.v1.AppInfo) stream | Use to list all apps in db |
 | Update | [AppInfo](#gitlab_aggregator.v1.AppInfo) | [AppInfo](#gitlab_aggregator.v1.AppInfo) | Use to update an app (add/edit contour, edit name) |
 | Delete | [AppInfo](#gitlab_aggregator.v1.AppInfo) | [.common.EmptyMessage](#common.EmptyMessage) | Use to delete an app (❗️not implemented yet❗️) |
+
+ 
+
+
+
+<a name="authorization/authorization.v1.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## authorization/authorization.v1.proto
+This file has messages for describing authorization
+
+
+<a name="gitlab_aggregator.v1.UserInfo"></a>
+
+### UserInfo
+Represents the user
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| username | [string](#string) |  | Username: unix-like |
+| password | [string](#string) |  | Username: unix-like |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="gitlab_aggregator.v1.Authorization"></a>
+
+### Authorization
+Service for handling authorization
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| SignIn | [.common.EmptyMessage](#common.EmptyMessage) | [.common.EmptyMessage](#common.EmptyMessage) | Use to sign in |
+| SignUp | [.common.EmptyMessage](#common.EmptyMessage) | [.common.EmptyMessage](#common.EmptyMessage) | Use to sign up |
 
  
 
