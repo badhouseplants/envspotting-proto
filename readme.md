@@ -29,7 +29,9 @@
     - [Applications](#gitlab_aggregator.v1.Applications)
   
 - [authorization/authorization.v1.proto](#authorization/authorization.v1.proto)
+    - [UserCreds](#gitlab_aggregator.v1.UserCreds)
     - [UserInfo](#gitlab_aggregator.v1.UserInfo)
+    - [UserSensitiveInfo](#gitlab_aggregator.v1.UserSensitiveInfo)
   
     - [Authorization](#gitlab_aggregator.v1.Authorization)
   
@@ -327,16 +329,49 @@ Service for handling applications
 This file has messages for describing authorization
 
 
-<a name="gitlab_aggregator.v1.UserInfo"></a>
+<a name="gitlab_aggregator.v1.UserCreds"></a>
 
-### UserInfo
-Represents the user
+### UserCreds
+Represents credentials
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | username | [string](#string) |  | Username: unix-like |
-| password | [string](#string) |  | Username: unix-like |
+| password | [string](#string) |  | Password |
+
+
+
+
+
+
+<a name="gitlab_aggregator.v1.UserInfo"></a>
+
+### UserInfo
+Represents the user without sensitive data
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | UUID |
+| username | [string](#string) |  | Username: unix-like |
+
+
+
+
+
+
+<a name="gitlab_aggregator.v1.UserSensitiveInfo"></a>
+
+### UserSensitiveInfo
+Represents the user
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | UUID |
+| username | [string](#string) |  | Username: unix-like |
+| password | [string](#string) |  | Password |
 
 
 
@@ -356,8 +391,9 @@ Service for handling authorization
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| SignIn | [.common.EmptyMessage](#common.EmptyMessage) | [.common.EmptyMessage](#common.EmptyMessage) | Use to sign in |
-| SignUp | [.common.EmptyMessage](#common.EmptyMessage) | [.common.EmptyMessage](#common.EmptyMessage) | Use to sign up |
+| SignIn | [UserCreds](#gitlab_aggregator.v1.UserCreds) | [UserInfo](#gitlab_aggregator.v1.UserInfo) | Use to sign in |
+| SignUp | [UserCreds](#gitlab_aggregator.v1.UserCreds) | [UserInfo](#gitlab_aggregator.v1.UserInfo) | Use to sign up |
+| RefreshToken | [.common.EmptyMessage](#common.EmptyMessage) | [.common.EmptyMessage](#common.EmptyMessage) | Use to refresh access token |
 
  
 
