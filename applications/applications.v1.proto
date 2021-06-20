@@ -11,7 +11,7 @@ service Applications {
   /// Use to add a whole new app
   rpc Create(AppName) returns (AppInfo) {} 
   /// Use to get app by ProjectID
-  rpc Get(AppName) returns (AppInfo) {}
+  rpc Get(AppId) returns (AppInfo) {}
   /// Use to list all apps in db
   rpc List(common.EmptyMessage) returns (stream AppInfo) {}
   /// Use to update an app (add/edit contour, edit name)
@@ -21,10 +21,17 @@ service Applications {
 }
 
 /**
- * Represents an application name only 
+ * Represents an application name only
 */
 message AppName {
-  string name = 1; // Application name: Unique string
+  string name = 1; // Application name
+}
+
+/**
+ * Represents an application UUID only
+ */
+message AppId {
+  string id = 1; // Application id: UUID
 }
 
 /**

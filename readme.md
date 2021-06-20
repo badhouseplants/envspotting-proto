@@ -21,6 +21,7 @@
     - [EmptyMessage](#common.EmptyMessage)
   
 - [applications/applications.v1.proto](#applications/applications.v1.proto)
+    - [AppID](#gitlab_aggregator.v1.AppID)
     - [AppInfo](#gitlab_aggregator.v1.AppInfo)
     - [AppName](#gitlab_aggregator.v1.AppName)
     - [Contour](#gitlab_aggregator.v1.Contour)
@@ -235,6 +236,21 @@ Represents an empty message
 This file has messages for describing applications
 
 
+<a name="gitlab_aggregator.v1.AppID"></a>
+
+### AppID
+Represents an application UUID only
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | Application id: UUID |
+
+
+
+
+
+
 <a name="gitlab_aggregator.v1.AppInfo"></a>
 
 ### AppInfo
@@ -260,7 +276,7 @@ Represents an application name only
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Application name: Unique string |
+| name | [string](#string) |  | Application name |
 
 
 
