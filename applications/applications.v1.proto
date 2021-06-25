@@ -1,23 +1,24 @@
 /// This file has messages for describing applications
 syntax = "proto3";
-package gitlab_aggregator.v1;
-option go_package = "github.com/allanger/gitlab-environment-aggregator/api/applications";
+package applications;
+option go_package = "applications";
 import "common/common.proto";
+import "applications/contours.v1.proto";
 
 /**
  * Service for handling applications
  */
 service Applications {  
   /// Use to add a whole new app
-  rpc Create(AppName) returns (AppInfo) {} 
+  rpc Create(AppName) returns (AppWithoutContours) {} 
   /// Use to get app by ProjectID
-  rpc Get(AppId) returns (AppInfo) {}
+  rpc Get(AppId) returns (AppFullInfo) {}
   /// Use to list all apps in db
-  rpc List(common.EmptyMessage) returns (stream AppInfo) {}
+  rpc List(common.EmptyMessage) returns (stream AppFullInfo) {}
   /// Use to update an app (add/edit contour, edit name)
-  rpc Update(AppInfo) returns (AppInfo) {}
-  /// Use to delete an app (❗️not implemented yet❗️)
-  rpc Delete(AppInfo) returns (common.EmptyMessage) {}
+  rpc Update(AppWithoutContours) returns (AppWithoutContours) {}
+  /// Use to delete an app
+  rpc Delete(AppWithoutContours) returns (common.EmptyMessage) {}
 }
 
 /**
@@ -37,24 +38,16 @@ message AppId {
 /**
  * Represents a application 
 */
-message AppInfo {
+message AppWithoutContours {
   string id = 1; // UUID
   string name = 2; // Application name: Unique string
-  repeated Contour contour = 3; // Map: <contour name: [services]>
 }
 
 /**
- * Represents a contour (the whole environment) 
+ * Represents an application with contours
 */
-message Contour {
-  string name = 1; // String
-  repeated Service service = 2; // Array of maps <projectID:environmentID>
-}
-
-/**
- * Represents a service
-*/
-message Service {
-  int64 project = 1; // Project ID from Gitlab
-  int64 environment = 2; //  Environment ID from Gitlab
+message AppFullInfo {
+  string id = 1; // UUID
+  string name = 2; // Application name: Unique string
+  repeated contours.ContourInfo contour = 3; // Map: <contour name: [services]>
 }

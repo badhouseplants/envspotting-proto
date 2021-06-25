@@ -1,0 +1,52 @@
+/// This file has messages for describing authentication
+syntax = "proto3";
+package users.v1;
+option go_package = "./users";
+/**
+ * Service for handling users
+ */
+service Authentication {  
+  /// Use to create a user
+  rpc Create(UserCreds) returns (UserInfo) {}
+  rpc Update(UserInfoWithSensitive) returns (UserInfo) {}
+  rpc Get(UserId) returns (UserInfo) {}
+  rpc List(UserName) returns (stream UserInfo) {}
+  /// Use to sign up
+  rpc SignUp(UserCreds) returns (UserInfo) {}
+}
+
+/**
+ * Represents credentials (username and password)
+*/
+message UserCreds { 
+  string username = 1; // Username: unix-like
+  string password = 2; // Password
+}
+
+/**
+ * Represents user ID only
+*/
+message UserId{
+  string id = 1; // UUID
+}
+
+/**
+ * Represents username only
+*/
+message UserName{
+  string username = 1; // Username
+}
+
+/**
+ * Represents the user without sensitive data
+ */
+message UserInfo {
+  string id = 1; // UUID
+  string username = 2; // Username: unix-like
+}
+
+message UserInfoWithSensitive { 
+  string id = 1; // UUID
+  string username = 2; // Username: unix-like
+  string password = 3; // Password
+}

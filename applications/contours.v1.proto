@@ -1,7 +1,7 @@
 /// This file has messages for describing contours
 syntax = "proto3";
-package contours.v1;
-option go_package = "/contours";
+package contours;
+option go_package = "contours";
 import "common/common.proto";
 
 /**
@@ -20,6 +20,8 @@ service Contours {
   rpc Delete(ContourInfo) returns (common.EmptyMessage) {}
   /// Use to add a services to the contour
   rpc AddServices(common.EmptyMessage) returns (common.EmptyMessage) {};
+  /// Use to rmove services from the contour
+  rpc RemoveService(common.EmptyMessage) returns (common.EmptyMessage) {};
 }
 
 /**

@@ -4,37 +4,59 @@
 ## Table of Contents
 
 - [environments/environments.v1.proto](#environments/environments.v1.proto)
-    - [EnvironmentID](#gitlab_aggregator.v1.EnvironmentID)
-    - [EnvironmentInfo](#gitlab_aggregator.v1.EnvironmentInfo)
-    - [EnvironmentName](#gitlab_aggregator.v1.EnvironmentName)
+    - [EnvironmentID](#environments.v1.EnvironmentID)
+    - [EnvironmentInfo](#environments.v1.EnvironmentInfo)
+    - [EnvironmentName](#environments.v1.EnvironmentName)
   
-    - [Environments](#gitlab_aggregator.v1.Environments)
+    - [Environments](#environments.v1.Environments)
   
 - [projects/projects.v1.proto](#projects/projects.v1.proto)
-    - [ProjectID](#gitlab_aggregator.v1.ProjectID)
-    - [ProjectInfo](#gitlab_aggregator.v1.ProjectInfo)
-    - [ProjectName](#gitlab_aggregator.v1.ProjectName)
+    - [ProjectID](#projects.v1.ProjectID)
+    - [ProjectInfo](#projects.v1.ProjectInfo)
+    - [ProjectName](#projects.v1.ProjectName)
   
-    - [Projects](#gitlab_aggregator.v1.Projects)
+    - [Projects](#projects.v1.Projects)
   
 - [common/common.proto](#common/common.proto)
     - [EmptyMessage](#common.EmptyMessage)
   
-- [applications/applications.v1.proto](#applications/applications.v1.proto)
-    - [AppID](#gitlab_aggregator.v1.AppID)
-    - [AppInfo](#gitlab_aggregator.v1.AppInfo)
-    - [AppName](#gitlab_aggregator.v1.AppName)
-    - [Contour](#gitlab_aggregator.v1.Contour)
-    - [Service](#gitlab_aggregator.v1.Service)
+- [contours/contours.v1.proto](#contours/contours.v1.proto)
+    - [ContourId](#contours.v1.ContourId)
+    - [ContourIdAndName](#contours.v1.ContourIdAndName)
+    - [ContourIdAndService](#contours.v1.ContourIdAndService)
+    - [ContourIdAndServices](#contours.v1.ContourIdAndServices)
+    - [ContourInfo](#contours.v1.ContourInfo)
+    - [ContourName](#contours.v1.ContourName)
+    - [Service](#contours.v1.Service)
   
-    - [Applications](#gitlab_aggregator.v1.Applications)
+    - [Contours](#contours.v1.Contours)
+  
+- [users/users.v1.proto](#users/users.v1.proto)
+    - [UserCreds](#users.v1.UserCreds)
+    - [UserId](#users.v1.UserId)
+    - [UserInfo](#users.v1.UserInfo)
+    - [UserInfoWithSensitive](#users.v1.UserInfoWithSensitive)
+    - [UserName](#users.v1.UserName)
+  
+    - [Authentication](#users.v1.Authentication)
+  
+- [applications/applications.v1.proto](#applications/applications.v1.proto)
+    - [AppId](#applications.v1.AppId)
+    - [AppInfo](#applications.v1.AppInfo)
+    - [AppName](#applications.v1.AppName)
+    - [Contour](#applications.v1.Contour)
+    - [Service](#applications.v1.Service)
+  
+    - [Applications](#applications.v1.Applications)
   
 - [authorization/authorization.v1.proto](#authorization/authorization.v1.proto)
-    - [UserCreds](#gitlab_aggregator.v1.UserCreds)
-    - [UserInfo](#gitlab_aggregator.v1.UserInfo)
-    - [UserSensitiveInfo](#gitlab_aggregator.v1.UserSensitiveInfo)
+    - [Authorization](#authorization.v1.Authorization)
   
-    - [Authorization](#gitlab_aggregator.v1.Authorization)
+- [authentication/authentication.v1.proto](#authentication/authentication.v1.proto)
+    - [UserCreds](#authentication.v1.UserCreds)
+    - [UserInfo](#authentication.v1.UserInfo)
+  
+    - [Authentication](#authentication.v1.Authentication)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -47,7 +69,7 @@
 This file has messages for describing gitlab environments
 
 
-<a name="gitlab_aggregator.v1.EnvironmentID"></a>
+<a name="environments.v1.EnvironmentID"></a>
 
 ### EnvironmentID
 Represents a Gitlab Environment ID
@@ -55,7 +77,7 @@ Represents a Gitlab Environment ID
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| projectId | [int64](#int64) |  | Gitlab Project ID |
+| project_id | [int64](#int64) |  | Gitlab Project ID |
 | id | [int64](#int64) |  | Gitlab Environment Id |
 
 
@@ -63,7 +85,7 @@ Represents a Gitlab Environment ID
 
 
 
-<a name="gitlab_aggregator.v1.EnvironmentInfo"></a>
+<a name="environments.v1.EnvironmentInfo"></a>
 
 ### EnvironmentInfo
 Represents a Gitlab Environment
@@ -77,18 +99,18 @@ Represents a Gitlab Environment
 | url | [string](#string) |  | Gitlab Environment external URL |
 | ref | [string](#string) |  | Gitlab Environment commit ref |
 | sha | [string](#string) |  | Gitlab Environment commit SHA |
-| ciStatus | [string](#string) |  | Gitlab Environment Gitlab-CI status |
-| ciId | [int64](#int64) |  | Gitlab Environment Gitlab-CI ID |
-| userId | [int64](#int64) |  | Gitlab Environment Gitlab-CI trigger user ID |
-| userName | [string](#string) |  | Gitlab Environment Gitlab-CI trigger user name |
-| updatedAd | [string](#string) |  | Gitlab Environment update time |
+| ci_status | [string](#string) |  | Gitlab Environment Gitlab-CI status |
+| ci_id | [int64](#int64) |  | Gitlab Environment Gitlab-CI ID |
+| user_id | [int64](#int64) |  | Gitlab Environment Gitlab-CI trigger user ID |
+| user_name | [string](#string) |  | Gitlab Environment Gitlab-CI trigger user name |
+| updated_at | [string](#string) |  | Gitlab Environment update time |
 
 
 
 
 
 
-<a name="gitlab_aggregator.v1.EnvironmentName"></a>
+<a name="environments.v1.EnvironmentName"></a>
 
 ### EnvironmentName
 Represents a Gitlab Environment name
@@ -96,7 +118,7 @@ Represents a Gitlab Environment name
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| projectId | [int64](#int64) |  | Gitlab Project ID |
+| project_id | [int64](#int64) |  | Gitlab Project ID |
 | name | [string](#string) |  | Gitlab Environment name |
 
 
@@ -110,7 +132,7 @@ Represents a Gitlab Environment name
  
 
 
-<a name="gitlab_aggregator.v1.Environments"></a>
+<a name="environments.v1.Environments"></a>
 
 ### Environments
 Service for handling environments
@@ -118,8 +140,8 @@ Kinda gitlab proxy
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Get | [EnvironmentID](#gitlab_aggregator.v1.EnvironmentID) | [EnvironmentInfo](#gitlab_aggregator.v1.EnvironmentInfo) | Get Environment by ID |
-| List | [EnvironmentName](#gitlab_aggregator.v1.EnvironmentName) | [EnvironmentInfo](#gitlab_aggregator.v1.EnvironmentInfo) stream | Stream Environments by name |
+| Get | [EnvironmentID](#environments.v1.EnvironmentID) | [EnvironmentInfo](#environments.v1.EnvironmentInfo) | Get Environment by ID |
+| List | [EnvironmentName](#environments.v1.EnvironmentName) | [EnvironmentInfo](#environments.v1.EnvironmentInfo) stream | Stream Environments by name |
 
  
 
@@ -132,7 +154,7 @@ Kinda gitlab proxy
 This file has messages for describing gitlab projects
 
 
-<a name="gitlab_aggregator.v1.ProjectID"></a>
+<a name="projects.v1.ProjectID"></a>
 
 ### ProjectID
 Represents a Gitlab Project ID
@@ -147,7 +169,7 @@ Represents a Gitlab Project ID
 
 
 
-<a name="gitlab_aggregator.v1.ProjectInfo"></a>
+<a name="projects.v1.ProjectInfo"></a>
 
 ### ProjectInfo
 Represents a Gitlab Project
@@ -158,16 +180,16 @@ Represents a Gitlab Project
 | id | [int64](#int64) |  | Gitlab Project ID |
 | name | [string](#string) |  | Gitlab Project name |
 | description | [string](#string) |  | Gitlab Project description |
-| webUrl | [string](#string) |  | Gitlab Project URL |
-| avatarUrl | [string](#string) |  | Gitlab Project avatar URL |
-| readmeUrl | [string](#string) |  | Gitlab Project readme ID |
+| web_url | [string](#string) |  | Gitlab Project URL |
+| avatar_url | [string](#string) |  | Gitlab Project avatar URL |
+| readme_url | [string](#string) |  | Gitlab Project readme ID |
 
 
 
 
 
 
-<a name="gitlab_aggregator.v1.ProjectName"></a>
+<a name="projects.v1.ProjectName"></a>
 
 ### ProjectName
 Represents a Gitlab Project name
@@ -188,7 +210,7 @@ Represents a Gitlab Project name
  
 
 
-<a name="gitlab_aggregator.v1.Projects"></a>
+<a name="projects.v1.Projects"></a>
 
 ### Projects
 Service for handling projects
@@ -196,8 +218,8 @@ Kinda gitlab proxy
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Get | [ProjectID](#gitlab_aggregator.v1.ProjectID) | [ProjectInfo](#gitlab_aggregator.v1.ProjectInfo) | Get project by ID |
-| List | [ProjectName](#gitlab_aggregator.v1.ProjectName) | [ProjectInfo](#gitlab_aggregator.v1.ProjectInfo) stream | Stream projects by name |
+| Get | [ProjectID](#projects.v1.ProjectID) | [ProjectInfo](#projects.v1.ProjectInfo) | Get project by ID |
+| List | [ProjectName](#projects.v1.ProjectName) | [ProjectInfo](#projects.v1.ProjectInfo) stream | Stream projects by name |
 
  
 
@@ -229,49 +251,97 @@ Represents an empty message
 
 
 
-<a name="applications/applications.v1.proto"></a>
+<a name="contours/contours.v1.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## applications/applications.v1.proto
-This file has messages for describing applications
+## contours/contours.v1.proto
+This file has messages for describing contours
 
 
-<a name="gitlab_aggregator.v1.AppID"></a>
+<a name="contours.v1.ContourId"></a>
 
-### AppID
-Represents an application UUID only
+### ContourId
+Represents an contour UUID only
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  | Application id: UUID |
+| id | [string](#string) |  | Contour id: UUID |
 
 
 
 
 
 
-<a name="gitlab_aggregator.v1.AppInfo"></a>
+<a name="contours.v1.ContourIdAndName"></a>
 
-### AppInfo
-Represents a application
+### ContourIdAndName
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  | UUID |
-| name | [string](#string) |  | Application name: Unique string |
-| contour | [Contour](#gitlab_aggregator.v1.Contour) | repeated | Map: &lt;contour name: [services]&gt; |
+| name | [string](#string) |  | Contour name: Unique string |
 
 
 
 
 
 
-<a name="gitlab_aggregator.v1.AppName"></a>
+<a name="contours.v1.ContourIdAndService"></a>
 
-### AppName
-Represents an application name only
+### ContourIdAndService
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | UUID |
+| services | [Service](#contours.v1.Service) | repeated | Array of maps &lt;projectID:environmentID&gt; |
+
+
+
+
+
+
+<a name="contours.v1.ContourIdAndServices"></a>
+
+### ContourIdAndServices
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | UUID |
+| services | [Service](#contours.v1.Service) | repeated | Array of maps &lt;projectID:environmentID&gt; |
+
+
+
+
+
+
+<a name="contours.v1.ContourInfo"></a>
+
+### ContourInfo
+Represents a contour
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | UUID |
+| name | [string](#string) |  | Contour name: Unique string |
+| services | [Service](#contours.v1.Service) | repeated | Array of maps &lt;projectID:environmentID&gt; |
+
+
+
+
+
+
+<a name="contours.v1.ContourName"></a>
+
+### ContourName
+Represents an contour name only
 
 
 | Field | Type | Label | Description |
@@ -283,23 +353,7 @@ Represents an application name only
 
 
 
-<a name="gitlab_aggregator.v1.Contour"></a>
-
-### Contour
-Represents a contour (the whole environment)
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | String |
-| service | [Service](#gitlab_aggregator.v1.Service) | repeated | Array of maps &lt;projectID:environmentID&gt; |
-
-
-
-
-
-
-<a name="gitlab_aggregator.v1.Service"></a>
+<a name="contours.v1.Service"></a>
 
 ### Service
 Represents a service
@@ -321,34 +375,35 @@ Represents a service
  
 
 
-<a name="gitlab_aggregator.v1.Applications"></a>
+<a name="contours.v1.Contours"></a>
 
-### Applications
-Service for handling applications
+### Contours
+Service for handling contours
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [AppName](#gitlab_aggregator.v1.AppName) | [AppInfo](#gitlab_aggregator.v1.AppInfo) | Use to add a whole new app |
-| Get | [AppName](#gitlab_aggregator.v1.AppName) | [AppInfo](#gitlab_aggregator.v1.AppInfo) | Use to get app by ProjectID |
-| List | [.common.EmptyMessage](#common.EmptyMessage) | [AppInfo](#gitlab_aggregator.v1.AppInfo) stream | Use to list all apps in db |
-| Update | [AppInfo](#gitlab_aggregator.v1.AppInfo) | [AppInfo](#gitlab_aggregator.v1.AppInfo) | Use to update an app (add/edit contour, edit name) |
-| Delete | [AppInfo](#gitlab_aggregator.v1.AppInfo) | [.common.EmptyMessage](#common.EmptyMessage) | Use to delete an app (❗️not implemented yet❗️) |
+| Create | [ContourName](#contours.v1.ContourName) | [ContourInfo](#contours.v1.ContourInfo) | Use to add a whole new app |
+| Get | [ContourId](#contours.v1.ContourId) | [ContourInfo](#contours.v1.ContourInfo) | Use to get app by ProjectID |
+| List | [.common.EmptyMessage](#common.EmptyMessage) | [ContourInfo](#contours.v1.ContourInfo) stream | Use to list all apps in db |
+| Update | [ContourInfo](#contours.v1.ContourInfo) | [ContourInfo](#contours.v1.ContourInfo) | Use to update an app (add/edit contour, edit name) |
+| Delete | [ContourInfo](#contours.v1.ContourInfo) | [.common.EmptyMessage](#common.EmptyMessage) | Use to delete an app (❗️not implemented yet❗️) |
+| AddServices | [.common.EmptyMessage](#common.EmptyMessage) | [.common.EmptyMessage](#common.EmptyMessage) | Use to add a services to the contour |
 
  
 
 
 
-<a name="authorization/authorization.v1.proto"></a>
+<a name="users/users.v1.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## authorization/authorization.v1.proto
-This file has messages for describing authorization
+## users/users.v1.proto
+This file has messages for describing authentication
 
 
-<a name="gitlab_aggregator.v1.UserCreds"></a>
+<a name="users.v1.UserCreds"></a>
 
 ### UserCreds
-Represents credentials
+Represents credentials (username and password)
 
 
 | Field | Type | Label | Description |
@@ -361,7 +416,22 @@ Represents credentials
 
 
 
-<a name="gitlab_aggregator.v1.UserInfo"></a>
+<a name="users.v1.UserId"></a>
+
+### UserId
+Represents user ID only
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | UUID |
+
+
+
+
+
+
+<a name="users.v1.UserInfo"></a>
 
 ### UserInfo
 Represents the user without sensitive data
@@ -377,10 +447,10 @@ Represents the user without sensitive data
 
 
 
-<a name="gitlab_aggregator.v1.UserSensitiveInfo"></a>
+<a name="users.v1.UserInfoWithSensitive"></a>
 
-### UserSensitiveInfo
-Represents the user
+### UserInfoWithSensitive
+
 
 
 | Field | Type | Label | Description |
@@ -393,6 +463,130 @@ Represents the user
 
 
 
+
+<a name="users.v1.UserName"></a>
+
+### UserName
+Represents username only
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| username | [string](#string) |  | Username |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="users.v1.Authentication"></a>
+
+### Authentication
+Service for handling users
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Create | [UserCreds](#users.v1.UserCreds) | [UserInfo](#users.v1.UserInfo) | Use to create a user |
+| Update | [UserInfoWithSensitive](#users.v1.UserInfoWithSensitive) | [UserInfo](#users.v1.UserInfo) |  |
+| Get | [UserId](#users.v1.UserId) | [UserInfo](#users.v1.UserInfo) |  |
+| List | [UserName](#users.v1.UserName) | [UserInfo](#users.v1.UserInfo) stream |  |
+| SignUp | [UserCreds](#users.v1.UserCreds) | [UserInfo](#users.v1.UserInfo) | Use to sign up |
+
+ 
+
+
+
+<a name="applications/applications.v1.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## applications/applications.v1.proto
+This file has messages for describing applications
+
+
+<a name="applications.v1.AppId"></a>
+
+### AppId
+Represents an application UUID only
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | Application id: UUID |
+
+
+
+
+
+
+<a name="applications.v1.AppInfo"></a>
+
+### AppInfo
+Represents a application
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | UUID |
+| name | [string](#string) |  | Application name: Unique string |
+| contour | [Contour](#applications.v1.Contour) | repeated | Map: &lt;contour name: [services]&gt; |
+
+
+
+
+
+
+<a name="applications.v1.AppName"></a>
+
+### AppName
+Represents an application name only
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  | Application name |
+
+
+
+
+
+
+<a name="applications.v1.Contour"></a>
+
+### Contour
+Represents a contour (the whole environment)
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  | String |
+| service | [Service](#applications.v1.Service) | repeated | Array of maps &lt;projectID:environmentID&gt; |
+
+
+
+
+
+
+<a name="applications.v1.Service"></a>
+
+### Service
+Represents a service
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project | [int64](#int64) |  | Project ID from Gitlab |
+| environment | [int64](#int64) |  | Environment ID from Gitlab |
+
+
+
+
+
  
 
  
@@ -400,16 +594,103 @@ Represents the user
  
 
 
-<a name="gitlab_aggregator.v1.Authorization"></a>
+<a name="applications.v1.Applications"></a>
+
+### Applications
+Service for handling applications
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Create | [AppName](#applications.v1.AppName) | [AppInfo](#applications.v1.AppInfo) | Use to add a whole new app |
+| Get | [AppId](#applications.v1.AppId) | [AppInfo](#applications.v1.AppInfo) | Use to get app by ProjectID |
+| List | [.common.EmptyMessage](#common.EmptyMessage) | [AppInfo](#applications.v1.AppInfo) stream | Use to list all apps in db |
+| Update | [AppInfo](#applications.v1.AppInfo) | [AppInfo](#applications.v1.AppInfo) | Use to update an app (add/edit contour, edit name) |
+| Delete | [AppInfo](#applications.v1.AppInfo) | [.common.EmptyMessage](#common.EmptyMessage) | Use to delete an app (❗️not implemented yet❗️) |
+
+ 
+
+
+
+<a name="authorization/authorization.v1.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## authorization/authorization.v1.proto
+This file has messages for describing authorization
+
+ 
+
+ 
+
+ 
+
+
+<a name="authorization.v1.Authorization"></a>
 
 ### Authorization
 Service for handling authorization
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| SignIn | [UserCreds](#gitlab_aggregator.v1.UserCreds) | [UserInfo](#gitlab_aggregator.v1.UserInfo) | Use to sign in |
-| SignUp | [UserCreds](#gitlab_aggregator.v1.UserCreds) | [UserInfo](#gitlab_aggregator.v1.UserInfo) | Use to sign up |
 | RefreshToken | [.common.EmptyMessage](#common.EmptyMessage) | [.common.EmptyMessage](#common.EmptyMessage) | Use to refresh access token |
+
+ 
+
+
+
+<a name="authentication/authentication.v1.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## authentication/authentication.v1.proto
+This file has messages for describing authentication
+
+
+<a name="authentication.v1.UserCreds"></a>
+
+### UserCreds
+Represents credentials
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| username | [string](#string) |  | Username: unix-like |
+| password | [string](#string) |  | Password |
+
+
+
+
+
+
+<a name="authentication.v1.UserInfo"></a>
+
+### UserInfo
+Represents the user without sensitive data
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | UUID |
+| username | [string](#string) |  | Username: unix-like |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="authentication.v1.Authentication"></a>
+
+### Authentication
+Service for handling authentication
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| SignIn | [UserCreds](#authentication.v1.UserCreds) | [UserInfo](#authentication.v1.UserInfo) | Use to sign in |
+| SignUp | [UserCreds](#authentication.v1.UserCreds) | [UserInfo](#authentication.v1.UserInfo) | Use to sign up |
 
  
 
