@@ -1,31 +1,32 @@
 /// This file has messages for describing applications
 syntax = "proto3";
 package applications;
-option go_package = "applications";
-import "common/common.proto";
-import "applications/contours.v1.proto";
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/applications";
+import "common/common.v1.proto";
+import "apps/contours/contours.v1.proto";
 
 /**
  * Service for handling applications
  */
 service Applications {  
   /// Use to add a whole new app
-  rpc Create(AppName) returns (AppWithoutContours) {} 
+  rpc Create(AppNameAndDescription) returns (AppWithoutContours) {} 
   /// Use to get app by ProjectID
   rpc Get(AppId) returns (AppFullInfo) {}
   /// Use to list all apps in db
-  rpc List(common.EmptyMessage) returns (stream AppFullInfo) {}
+  rpc List(common.EmptyMessage) returns (stream AppWithoutContours) {}
   /// Use to update an app (add/edit contour, edit name)
   rpc Update(AppWithoutContours) returns (AppWithoutContours) {}
   /// Use to delete an app
-  rpc Delete(AppWithoutContours) returns (common.EmptyMessage) {}
+  rpc Delete(AppIdAndName) returns (common.EmptyMessage) {}
 }
 
 /**
  * Represents an application name only
 */
-message AppName {
+message AppNameAndDescription {
   string name = 1; // Application name
+  string description = 2; // Application brief description 
 }
 
 /**
@@ -36,11 +37,20 @@ message AppId {
 }
 
 /**
+ * Represents an application name and id
+ */
+message AppIdAndName { 
+  string id = 1; // UUID
+  string name = 2; // Application name: Unique string
+}
+
+/**
  * Represents a application 
 */
 message AppWithoutContours {
   string id = 1; // UUID
   string name = 2; // Application name: Unique string
+  string description = 3; // Application brief description 
 }
 
 /**
@@ -49,5 +59,6 @@ message AppWithoutContours {
 message AppFullInfo {
   string id = 1; // UUID
   string name = 2; // Application name: Unique string
-  repeated contours.ContourInfo contour = 3; // Map: <contour name: [services]>
+  string description = 3; // Application brief description 
+  repeated contours.ContourInfo contour = 4; // Map: <contour name: [services]>
 }

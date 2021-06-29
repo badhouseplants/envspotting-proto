@@ -1,7 +1,7 @@
 /// This file has messages for describing gitlab environments
 syntax = "proto3";
-package environments.v1;
-option go_package = "environments";
+package environments;
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/environments";
 
 /**
  * Service for handling environments

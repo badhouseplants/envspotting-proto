@@ -1,7 +1,7 @@
 /// This file has messages for describing gitlab projects
 syntax = "proto3";
-package projects.v1;
-option go_package = "projects";
+package projects;
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/projects";
 
 /**
  * Service for handling projects

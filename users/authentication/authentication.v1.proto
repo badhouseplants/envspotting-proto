@@ -1,0 +1,14 @@
+/// This file has messages for describing authentication
+syntax = "proto3";
+package authentication;
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/authentication";
+import "common/common.v1.proto";
+import "users/accounts/accounts.v1.proto";
+
+/**
+ * Service for handling authentication
+ */
+service Authentication {  
+  /// Use to sign in
+  rpc SignIn(accounts.AccountCreds) returns (common.EmptyMessage) {}
+}
