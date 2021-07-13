@@ -1,0 +1,63 @@
+/// This file has messages for describing authentication
+syntax = "proto3";
+package users;
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/accounts";
+import "common/common.v1.proto";
+
+/**
+ * Service for handling accounts
+ */
+service Accounts {  
+  /// Use to create a Account
+  rpc Create(AccountCreds) returns (AccountInfo) {}
+  /// Use to update a Account
+  rpc UpdateUsername(AccountInfo) returns (AccountInfo) {}
+  rpc UpdatePassword(PasswordUpdate) returns (common.EmptyMessage) {}
+  /// Account to get a Account by ID
+  rpc Get(AccountId) returns (AccountInfo) {}
+  /// List Accounts
+  rpc List(AccountName) returns (stream AccountInfo) {}
+}
+
+/**
+ * Represents credentials (username and password)
+*/
+message AccountCreds { 
+  string username = 1; // username: unix-like
+  string password = 2; // Password
+}
+
+/**
+ * Represents Account ID only
+*/
+message AccountId {
+  string id = 1; // UUID
+}
+
+/**
+ * Represents username only
+*/
+message AccountName {
+  string username = 1; // username
+}
+
+/**
+ * Represents the Account without sensitive data
+ */
+message AccountInfo {
+  string id = 1; // UUID
+  string username = 2; // username: unix-like
+}
+
+message AccountInfoWithSensitive { 
+  string id = 1; // UUID
+  string username = 2; // username: unix-like
+  string password = 3; // Password
+}
+
+message PasswordUpdate {
+  string id = 1;
+  string username = 2;
+  string oldPassword = 3;
+  string newPassword = 4;
+}

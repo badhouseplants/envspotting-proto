@@ -1,0 +1,68 @@
+/// This file has messages for describing applications
+syntax = "proto3";
+package apps;
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/apps/applications";
+import "common/common.v1.proto";
+import "apps/contours/contours.v1.proto";
+
+/**
+ * Service for handling applications
+ */
+service Applications {  
+  /// Use to add a whole new app
+  rpc Create(AppNameAndDescription) returns (AppWithoutContours) {} 
+  /// Use to get app by ProjectID
+  rpc Get(AppId) returns (AppFullInfo) {}
+  /// Use to list all apps in db
+  rpc List(ListOptions) returns (stream AppWithoutContours) {}
+  /// Use to update an app (add/edit contour, edit name)
+  rpc Update(AppWithoutContours) returns (AppWithoutContours) {}
+  /// Use to delete an app
+  rpc Delete(AppIdAndName) returns (common.EmptyMessage) {}
+}
+
+/**
+ * Represents an application name only
+*/
+message AppNameAndDescription {
+  string name = 1; // Application name
+  string description = 2; // Application brief description 
+}
+
+/**
+ * Represents an application UUID only
+ */
+message AppId {
+  string id = 1; // Application id: UUID
+}
+
+/**
+ * Represents an application name and id
+ */
+message AppIdAndName { 
+  string id = 1; // UUID
+  string name = 2; // Application name: Unique string
+}
+
+/**
+ * Represents a application 
+*/
+message AppWithoutContours {
+  string id = 1; // UUID
+  string name = 2; // Application name: Unique string
+  string description = 3; // Application brief description 
+}
+
+/**
+ * Represents an application with contours
+*/
+message AppFullInfo {
+  string id = 1; // UUID
+  string name = 2; // Application name: Unique string
+  string description = 3; // Application brief description 
+  repeated ContourInfo contour = 4; // Map: <contour name: [services]>
+}
+
+message ListOptions { 
+  bool added = 1;
+}

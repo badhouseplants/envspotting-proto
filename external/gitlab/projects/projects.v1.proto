@@ -1,7 +1,7 @@
 /// This file has messages for describing gitlab projects
 syntax = "proto3";
-package gitlab_aggregator.v1;
-option go_package = "github.com/allanger/gitlab-environment-aggregator/api/projects";
+package gitlab;
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/external/gitlab/projects";
 
 /**
  * Service for handling projects
@@ -35,7 +35,7 @@ message ProjectInfo {
   int64 id = 1; // Gitlab Project ID
   string name = 2; // Gitlab Project name
   string description = 3; // Gitlab Project description
-  string webUrl = 4; // Gitlab Project URL
-  string avatarUrl = 5; // Gitlab Project avatar URL
-  string readmeUrl = 6; // // Gitlab Project readme ID
+  string web_url = 4; // Gitlab Project URL
+  string avatar_url = 5; // Gitlab Project avatar URL
+  string readme_url = 6; // // Gitlab Project readme ID
 }
