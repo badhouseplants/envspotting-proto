@@ -14,7 +14,6 @@
     - [ListOptions](#users.ListOptions)
   
     - [AccessRights](#users.AccessRights)
-    - [AccessRuleInfo.AccessRights](#users.AccessRuleInfo.AccessRights)
   
     - [Rights](#users.Rights)
   
@@ -152,7 +151,7 @@ This file has messages for describing applications
 | id | [string](#string) |  |  |
 | userId | [string](#string) |  |  |
 | applicationId | [string](#string) |  |  |
-| accessRight | [AccessRuleInfo.AccessRights](#users.AccessRuleInfo.AccessRights) |  |  |
+| accessRight | [AccessRights](#users.AccessRights) |  |  |
 
 
 
@@ -196,19 +195,6 @@ This file has messages for describing applications
 <a name="users.AccessRights"></a>
 
 ### AccessRights
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| READ | 0 |  |
-| WRITE | 1 |  |
-| DELETE | 2 |  |
-
-
-
-<a name="users.AccessRuleInfo.AccessRights"></a>
-
-### AccessRuleInfo.AccessRights
 
 
 | Name | Number | Description |
