@@ -1,7 +1,7 @@
 /// This file has messages for describing applications
 syntax = "proto3";
-package applications;
-option go_package = "github.com/allanger/gitlab-environment-aggregator/models/applications";
+package apps;
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/apps/applications";
 import "common/common.v1.proto";
 import "apps/contours/contours.v1.proto";
 
@@ -14,7 +14,7 @@ service Applications {
   /// Use to get app by ProjectID
   rpc Get(AppId) returns (AppFullInfo) {}
   /// Use to list all apps in db
-  rpc List(common.EmptyMessage) returns (stream AppWithoutContours) {}
+  rpc List(ListOptions) returns (stream AppWithoutContours) {}
   /// Use to update an app (add/edit contour, edit name)
   rpc Update(AppWithoutContours) returns (AppWithoutContours) {}
   /// Use to delete an app
@@ -60,5 +60,9 @@ message AppFullInfo {
   string id = 1; // UUID
   string name = 2; // Application name: Unique string
   string description = 3; // Application brief description 
-  repeated contours.ContourInfo contour = 4; // Map: <contour name: [services]>
+  repeated ContourInfo contour = 4; // Map: <contour name: [services]>
+}
+
+message ListOptions { 
+  bool added = 1;
 }

@@ -1,7 +1,7 @@
 /// This file has messages for describing contours
 syntax = "proto3";
-package contours;
-option go_package = "github.com/allanger/gitlab-environment-aggregator/models/contours";
+package apps;
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/apps/contours";
 import "common/common.v1.proto";
 
 /**
@@ -13,27 +13,32 @@ service Contours {
   /// Use to get app by ProjectID
   rpc Get(ContourId) returns (ContourInfo) {}
   /// Use to list all apps in db
-  rpc List(common.EmptyMessage) returns (stream ContourInfo) {}
+  rpc List(ContoursListOption) returns (stream ContourInfo) {}
   /// Use to update an app (add/edit contour, edit name)
   rpc Update(ContourInfoWithoutServices) returns (ContourInfoWithoutServices) {}
   /// Use to delete an app (❗️not implemented yet❗️)
   rpc Delete(ContourIdAndName) returns (common.EmptyMessage) {}
   /// Use to add a services to the contour
-  rpc AddServices(RepeatedServiceWithoutID) returns (common.EmptyMessage) {};
+  rpc AddServices(RepeatedServiceWithoutId) returns (common.EmptyMessage) {};
   /// Use to rmove services from the contour
-  rpc RemoveService(ServiceInfo) returns (common.EmptyMessage) {};
+  rpc RemoveService(ServiceIdAndContourId) returns (common.EmptyMessage) {};
 }
 
 /**
  * Represents an contour UUID only
  */
 message ContourId {
-  string id = 1; // Contour id: UUID
+  string id = 1; // Contour ID: UUID
+}
+
+message ContoursListOption { 
+  string appId = 1; // Applcation ID: UUID
 }
 
 message ContourIdAndName { 
   string id = 1; // UUID
   string name = 2; // Contour name: Unique string
+  string appId = 3; // Applcation ID: UUID
 }
 
 message ContourInfoWithoutServices {
@@ -45,6 +50,7 @@ message ContourInfoWithoutServices {
 message ContourNameAndDescription { 
   string name = 1; 
   string description = 2;
+  string appId = 3; // Applcation ID: UUID
 }
 
 /**
@@ -55,6 +61,7 @@ message ContourInfo {
   string name = 2; // Contour name: Unique string
   string description = 3;
   repeated ServiceInfo services = 4; // Array of maps <projectID:environmentID>
+  string appId = 5; // Applcation ID: UUID
 }
 
 /**
@@ -74,10 +81,22 @@ message ServiceInfo {
   int64 environment = 3; //  Environment ID from Gitlab
 }
 
+message ServiceIdAndContourId { 
+  string contourId = 1;
+  string serviceId = 2;
+}
 /**
  * Represents an array of services
 */
-message RepeatedServiceWithoutID { 
-  repeated ServiceWithoutId service = 1;
+message RepeatedServiceWithoutId { 
+  string contourId = 1;
+  repeated ServiceWithoutId service = 2;
 }
 
+/**
+ * Represents an array of services
+*/
+message RepeatedServiceWithId { 
+  string contourId = 1;
+  repeated ServiceInfo service = 2;
+}

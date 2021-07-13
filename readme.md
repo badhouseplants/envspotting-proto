@@ -3,232 +3,84 @@
 
 ## Table of Contents
 
-- [environments/environments.v1.proto](#environments/environments.v1.proto)
-    - [EnvironmentID](#environments.v1.EnvironmentID)
-    - [EnvironmentInfo](#environments.v1.EnvironmentInfo)
-    - [EnvironmentName](#environments.v1.EnvironmentName)
-  
-    - [Environments](#environments.v1.Environments)
-  
-- [projects/projects.v1.proto](#projects/projects.v1.proto)
-    - [ProjectID](#projects.v1.ProjectID)
-    - [ProjectInfo](#projects.v1.ProjectInfo)
-    - [ProjectName](#projects.v1.ProjectName)
-  
-    - [Projects](#projects.v1.Projects)
-  
-- [common/common.proto](#common/common.proto)
+- [common/common.v1.proto](#common/common.v1.proto)
     - [EmptyMessage](#common.EmptyMessage)
   
-- [contours/contours.v1.proto](#contours/contours.v1.proto)
-    - [ContourId](#contours.v1.ContourId)
-    - [ContourIdAndName](#contours.v1.ContourIdAndName)
-    - [ContourIdAndService](#contours.v1.ContourIdAndService)
-    - [ContourIdAndServices](#contours.v1.ContourIdAndServices)
-    - [ContourInfo](#contours.v1.ContourInfo)
-    - [ContourName](#contours.v1.ContourName)
-    - [Service](#contours.v1.Service)
+- [users/rights/rights.proto](#users/rights/rights.proto)
+    - [AccessRuleId](#users.AccessRuleId)
+    - [AccessRuleIdAndRight](#users.AccessRuleIdAndRight)
+    - [AccessRuleInfo](#users.AccessRuleInfo)
+    - [AccessRuleWithoutId](#users.AccessRuleWithoutId)
+    - [ListOptions](#users.ListOptions)
   
-    - [Contours](#contours.v1.Contours)
+    - [AccessRights](#users.AccessRights)
+    - [AccessRuleInfo.AccessRights](#users.AccessRuleInfo.AccessRights)
   
-- [users/users.v1.proto](#users/users.v1.proto)
-    - [UserCreds](#users.v1.UserCreds)
-    - [UserId](#users.v1.UserId)
-    - [UserInfo](#users.v1.UserInfo)
-    - [UserInfoWithSensitive](#users.v1.UserInfoWithSensitive)
-    - [UserName](#users.v1.UserName)
+    - [Rights](#users.Rights)
   
-    - [Authentication](#users.v1.Authentication)
+- [users/accounts/accounts.v1.proto](#users/accounts/accounts.v1.proto)
+    - [AccountCreds](#users.AccountCreds)
+    - [AccountId](#users.AccountId)
+    - [AccountInfo](#users.AccountInfo)
+    - [AccountInfoWithSensitive](#users.AccountInfoWithSensitive)
+    - [AccountName](#users.AccountName)
+    - [PasswordUpdate](#users.PasswordUpdate)
   
-- [applications/applications.v1.proto](#applications/applications.v1.proto)
-    - [AppId](#applications.v1.AppId)
-    - [AppInfo](#applications.v1.AppInfo)
-    - [AppName](#applications.v1.AppName)
-    - [Contour](#applications.v1.Contour)
-    - [Service](#applications.v1.Service)
+    - [Accounts](#users.Accounts)
   
-    - [Applications](#applications.v1.Applications)
+- [users/authorization/authorization.v1.proto](#users/authorization/authorization.v1.proto)
+    - [Authorization](#users.Authorization)
   
-- [authorization/authorization.v1.proto](#authorization/authorization.v1.proto)
-    - [Authorization](#authorization.v1.Authorization)
+- [users/authentication/authentication.v1.proto](#users/authentication/authentication.v1.proto)
+    - [Authentication](#users.Authentication)
   
-- [authentication/authentication.v1.proto](#authentication/authentication.v1.proto)
-    - [UserCreds](#authentication.v1.UserCreds)
-    - [UserInfo](#authentication.v1.UserInfo)
+- [external/gitlab/environments/environments.v1.proto](#external/gitlab/environments/environments.v1.proto)
+    - [EnvironmentID](#gitlab.EnvironmentID)
+    - [EnvironmentInfo](#gitlab.EnvironmentInfo)
+    - [EnvironmentName](#gitlab.EnvironmentName)
   
-    - [Authentication](#authentication.v1.Authentication)
+    - [Environments](#gitlab.Environments)
+  
+- [external/gitlab/projects/projects.v1.proto](#external/gitlab/projects/projects.v1.proto)
+    - [ProjectID](#gitlab.ProjectID)
+    - [ProjectInfo](#gitlab.ProjectInfo)
+    - [ProjectName](#gitlab.ProjectName)
+  
+    - [Projects](#gitlab.Projects)
+  
+- [apps/contours/contours.v1.proto](#apps/contours/contours.v1.proto)
+    - [ContourId](#apps.ContourId)
+    - [ContourIdAndName](#apps.ContourIdAndName)
+    - [ContourInfo](#apps.ContourInfo)
+    - [ContourInfoWithoutServices](#apps.ContourInfoWithoutServices)
+    - [ContourNameAndDescription](#apps.ContourNameAndDescription)
+    - [ContoursListOption](#apps.ContoursListOption)
+    - [RepeatedServiceWithId](#apps.RepeatedServiceWithId)
+    - [RepeatedServiceWithoutId](#apps.RepeatedServiceWithoutId)
+    - [ServiceIdAndContourId](#apps.ServiceIdAndContourId)
+    - [ServiceInfo](#apps.ServiceInfo)
+    - [ServiceWithoutId](#apps.ServiceWithoutId)
+  
+    - [Contours](#apps.Contours)
+  
+- [apps/applications/applications.v1.proto](#apps/applications/applications.v1.proto)
+    - [AppFullInfo](#apps.AppFullInfo)
+    - [AppId](#apps.AppId)
+    - [AppIdAndName](#apps.AppIdAndName)
+    - [AppNameAndDescription](#apps.AppNameAndDescription)
+    - [AppWithoutContours](#apps.AppWithoutContours)
+    - [ListOptions](#apps.ListOptions)
+  
+    - [Applications](#apps.Applications)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="environments/environments.v1.proto"></a>
+<a name="common/common.v1.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## environments/environments.v1.proto
-This file has messages for describing gitlab environments
-
-
-<a name="environments.v1.EnvironmentID"></a>
-
-### EnvironmentID
-Represents a Gitlab Environment ID
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| project_id | [int64](#int64) |  | Gitlab Project ID |
-| id | [int64](#int64) |  | Gitlab Environment Id |
-
-
-
-
-
-
-<a name="environments.v1.EnvironmentInfo"></a>
-
-### EnvironmentInfo
-Represents a Gitlab Environment
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  | Gitlab Environment ID |
-| name | [string](#string) |  | Gitlab Environment name |
-| state | [string](#string) |  | Gitlab Environment state |
-| url | [string](#string) |  | Gitlab Environment external URL |
-| ref | [string](#string) |  | Gitlab Environment commit ref |
-| sha | [string](#string) |  | Gitlab Environment commit SHA |
-| ci_status | [string](#string) |  | Gitlab Environment Gitlab-CI status |
-| ci_id | [int64](#int64) |  | Gitlab Environment Gitlab-CI ID |
-| user_id | [int64](#int64) |  | Gitlab Environment Gitlab-CI trigger user ID |
-| user_name | [string](#string) |  | Gitlab Environment Gitlab-CI trigger user name |
-| updated_at | [string](#string) |  | Gitlab Environment update time |
-
-
-
-
-
-
-<a name="environments.v1.EnvironmentName"></a>
-
-### EnvironmentName
-Represents a Gitlab Environment name
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| project_id | [int64](#int64) |  | Gitlab Project ID |
-| name | [string](#string) |  | Gitlab Environment name |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="environments.v1.Environments"></a>
-
-### Environments
-Service for handling environments
-Kinda gitlab proxy
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| Get | [EnvironmentID](#environments.v1.EnvironmentID) | [EnvironmentInfo](#environments.v1.EnvironmentInfo) | Get Environment by ID |
-| List | [EnvironmentName](#environments.v1.EnvironmentName) | [EnvironmentInfo](#environments.v1.EnvironmentInfo) stream | Stream Environments by name |
-
- 
-
-
-
-<a name="projects/projects.v1.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## projects/projects.v1.proto
-This file has messages for describing gitlab projects
-
-
-<a name="projects.v1.ProjectID"></a>
-
-### ProjectID
-Represents a Gitlab Project ID
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  | Gitlab Project ID |
-
-
-
-
-
-
-<a name="projects.v1.ProjectInfo"></a>
-
-### ProjectInfo
-Represents a Gitlab Project
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  | Gitlab Project ID |
-| name | [string](#string) |  | Gitlab Project name |
-| description | [string](#string) |  | Gitlab Project description |
-| web_url | [string](#string) |  | Gitlab Project URL |
-| avatar_url | [string](#string) |  | Gitlab Project avatar URL |
-| readme_url | [string](#string) |  | Gitlab Project readme ID |
-
-
-
-
-
-
-<a name="projects.v1.ProjectName"></a>
-
-### ProjectName
-Represents a Gitlab Project name
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Gitlab Project name |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="projects.v1.Projects"></a>
-
-### Projects
-Service for handling projects
-Kinda gitlab proxy
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| Get | [ProjectID](#projects.v1.ProjectID) | [ProjectInfo](#projects.v1.ProjectInfo) | Get project by ID |
-| List | [ProjectName](#projects.v1.ProjectName) | [ProjectInfo](#projects.v1.ProjectInfo) stream | Stream projects by name |
-
- 
-
-
-
-<a name="common/common.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## common/common.proto
+## common/common.v1.proto
 This file has messages for reusable common messages
 
 
@@ -251,14 +103,494 @@ Represents an empty message
 
 
 
-<a name="contours/contours.v1.proto"></a>
+<a name="users/rights/rights.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## contours/contours.v1.proto
+## users/rights/rights.proto
+This file has messages for describing applications
+
+
+<a name="users.AccessRuleId"></a>
+
+### AccessRuleId
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="users.AccessRuleIdAndRight"></a>
+
+### AccessRuleIdAndRight
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| accessRight | [AccessRights](#users.AccessRights) |  |  |
+
+
+
+
+
+
+<a name="users.AccessRuleInfo"></a>
+
+### AccessRuleInfo
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| userId | [string](#string) |  |  |
+| applicationId | [string](#string) |  |  |
+| accessRight | [AccessRuleInfo.AccessRights](#users.AccessRuleInfo.AccessRights) |  |  |
+
+
+
+
+
+
+<a name="users.AccessRuleWithoutId"></a>
+
+### AccessRuleWithoutId
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| userId | [string](#string) |  |  |
+| applicationId | [string](#string) |  |  |
+| accessRight | [AccessRights](#users.AccessRights) |  |  |
+
+
+
+
+
+
+<a name="users.ListOptions"></a>
+
+### ListOptions
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| appId | [apps.AppId](#apps.AppId) |  |  |
+
+
+
+
+
+ 
+
+
+<a name="users.AccessRights"></a>
+
+### AccessRights
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| READ | 0 |  |
+| WRITE | 1 |  |
+| DELETE | 2 |  |
+
+
+
+<a name="users.AccessRuleInfo.AccessRights"></a>
+
+### AccessRuleInfo.AccessRights
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| READ | 0 |  |
+| WRITE | 1 |  |
+| DELETE | 2 |  |
+
+
+ 
+
+ 
+
+
+<a name="users.Rights"></a>
+
+### Rights
+Service for handling access rights
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Create | [AccessRuleWithoutId](#users.AccessRuleWithoutId) | [AccessRuleInfo](#users.AccessRuleInfo) |  |
+| Update | [AccessRuleIdAndRight](#users.AccessRuleIdAndRight) | [AccessRuleIdAndRight](#users.AccessRuleIdAndRight) |  |
+| Delete | [AccessRuleId](#users.AccessRuleId) | [.common.EmptyMessage](#common.EmptyMessage) |  |
+| Get | [AccessRuleId](#users.AccessRuleId) | [AccessRuleInfo](#users.AccessRuleInfo) |  |
+| List | [ListOptions](#users.ListOptions) | [AccessRuleInfo](#users.AccessRuleInfo) stream |  |
+
+ 
+
+
+
+<a name="users/accounts/accounts.v1.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## users/accounts/accounts.v1.proto
+This file has messages for describing authentication
+
+
+<a name="users.AccountCreds"></a>
+
+### AccountCreds
+Represents credentials (username and password)
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| username | [string](#string) |  | username: unix-like |
+| password | [string](#string) |  | Password |
+
+
+
+
+
+
+<a name="users.AccountId"></a>
+
+### AccountId
+Represents Account ID only
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | UUID |
+
+
+
+
+
+
+<a name="users.AccountInfo"></a>
+
+### AccountInfo
+Represents the Account without sensitive data
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | UUID |
+| username | [string](#string) |  | username: unix-like |
+
+
+
+
+
+
+<a name="users.AccountInfoWithSensitive"></a>
+
+### AccountInfoWithSensitive
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | UUID |
+| username | [string](#string) |  | username: unix-like |
+| password | [string](#string) |  | Password |
+
+
+
+
+
+
+<a name="users.AccountName"></a>
+
+### AccountName
+Represents username only
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| username | [string](#string) |  | username |
+
+
+
+
+
+
+<a name="users.PasswordUpdate"></a>
+
+### PasswordUpdate
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| oldPassword | [string](#string) |  |  |
+| newPassword | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="users.Accounts"></a>
+
+### Accounts
+Service for handling accounts
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Create | [AccountCreds](#users.AccountCreds) | [AccountInfo](#users.AccountInfo) | Use to create a Account |
+| UpdateUsername | [AccountInfo](#users.AccountInfo) | [AccountInfo](#users.AccountInfo) | Use to update a Account |
+| UpdatePassword | [PasswordUpdate](#users.PasswordUpdate) | [.common.EmptyMessage](#common.EmptyMessage) |  |
+| Get | [AccountId](#users.AccountId) | [AccountInfo](#users.AccountInfo) | Account to get a Account by ID |
+| List | [AccountName](#users.AccountName) | [AccountInfo](#users.AccountInfo) stream | List Accounts |
+
+ 
+
+
+
+<a name="users/authorization/authorization.v1.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## users/authorization/authorization.v1.proto
+This file has messages for describing authorization
+
+ 
+
+ 
+
+ 
+
+
+<a name="users.Authorization"></a>
+
+### Authorization
+Service for handling authorization
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| RefreshToken | [.common.EmptyMessage](#common.EmptyMessage) | [.common.EmptyMessage](#common.EmptyMessage) | Use to refresh access token |
+
+ 
+
+
+
+<a name="users/authentication/authentication.v1.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## users/authentication/authentication.v1.proto
+This file has messages for describing authentication
+
+ 
+
+ 
+
+ 
+
+
+<a name="users.Authentication"></a>
+
+### Authentication
+Service for handling authentication
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| SignIn | [AccountCreds](#users.AccountCreds) | [.common.EmptyMessage](#common.EmptyMessage) | Use to sign in |
+| SignUp | [AccountCreds](#users.AccountCreds) | [.common.EmptyMessage](#common.EmptyMessage) | Use to sign up |
+
+ 
+
+
+
+<a name="external/gitlab/environments/environments.v1.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## external/gitlab/environments/environments.v1.proto
+This file has messages for describing gitlab environments
+
+
+<a name="gitlab.EnvironmentID"></a>
+
+### EnvironmentID
+Represents a Gitlab Environment ID
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [int64](#int64) |  | Gitlab Project ID |
+| id | [int64](#int64) |  | Gitlab Environment Id |
+
+
+
+
+
+
+<a name="gitlab.EnvironmentInfo"></a>
+
+### EnvironmentInfo
+Represents a Gitlab Environment
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  | Gitlab Environment ID |
+| name | [string](#string) |  | Gitlab Environment name |
+| state | [string](#string) |  | Gitlab Environment state |
+| url | [string](#string) |  | Gitlab Environment external URL |
+| ref | [string](#string) |  | Gitlab Environment commit |
+| sha | [string](#string) |  | Gitlab Environment commit SHA |
+| ci_status | [string](#string) |  | Gitlab Environment Gitlab-CI status |
+| ci_id | [int64](#int64) |  | Gitlab Environment Gitlab-CI ID |
+| user_id | [int64](#int64) |  | Gitlab Environment Gitlab-CI trigger user ID |
+| user_name | [string](#string) |  | Gitlab Environment Gitlab-CI trigger user name |
+| updated_at | [string](#string) |  | Gitlab Environment update time |
+
+
+
+
+
+
+<a name="gitlab.EnvironmentName"></a>
+
+### EnvironmentName
+Represents a Gitlab Environment name
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [int64](#int64) |  | Gitlab Project ID |
+| name | [string](#string) |  | Gitlab Environment name |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="gitlab.Environments"></a>
+
+### Environments
+Service for handling environments
+Kinda gitlab proxy
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Get | [EnvironmentID](#gitlab.EnvironmentID) | [EnvironmentInfo](#gitlab.EnvironmentInfo) | Get Environment by ID |
+| List | [EnvironmentName](#gitlab.EnvironmentName) | [EnvironmentInfo](#gitlab.EnvironmentInfo) stream | Stream Environments by name |
+
+ 
+
+
+
+<a name="external/gitlab/projects/projects.v1.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## external/gitlab/projects/projects.v1.proto
+This file has messages for describing gitlab projects
+
+
+<a name="gitlab.ProjectID"></a>
+
+### ProjectID
+Represents a Gitlab Project ID
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  | Gitlab Project ID |
+
+
+
+
+
+
+<a name="gitlab.ProjectInfo"></a>
+
+### ProjectInfo
+Represents a Gitlab Project
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  | Gitlab Project ID |
+| name | [string](#string) |  | Gitlab Project name |
+| description | [string](#string) |  | Gitlab Project description |
+| web_url | [string](#string) |  | Gitlab Project URL |
+| avatar_url | [string](#string) |  | Gitlab Project avatar URL |
+| readme_url | [string](#string) |  | Gitlab Project readme ID |
+
+
+
+
+
+
+<a name="gitlab.ProjectName"></a>
+
+### ProjectName
+Represents a Gitlab Project name
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  | Gitlab Project name |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="gitlab.Projects"></a>
+
+### Projects
+Service for handling projects
+Kinda gitlab proxy
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Get | [ProjectID](#gitlab.ProjectID) | [ProjectInfo](#gitlab.ProjectInfo) | Get project by ID |
+| List | [ProjectName](#gitlab.ProjectName) | [ProjectInfo](#gitlab.ProjectInfo) stream | Stream projects by name |
+
+ 
+
+
+
+<a name="apps/contours/contours.v1.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## apps/contours/contours.v1.proto
 This file has messages for describing contours
 
 
-<a name="contours.v1.ContourId"></a>
+<a name="apps.ContourId"></a>
 
 ### ContourId
 Represents an contour UUID only
@@ -266,14 +598,14 @@ Represents an contour UUID only
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  | Contour id: UUID |
+| id | [string](#string) |  | Contour ID: UUID |
 
 
 
 
 
 
-<a name="contours.v1.ContourIdAndName"></a>
+<a name="apps.ContourIdAndName"></a>
 
 ### ContourIdAndName
 
@@ -283,80 +615,150 @@ Represents an contour UUID only
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  | UUID |
 | name | [string](#string) |  | Contour name: Unique string |
+| appId | [string](#string) |  | Applcation ID: UUID |
 
 
 
 
 
 
-<a name="contours.v1.ContourIdAndService"></a>
-
-### ContourIdAndService
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  | UUID |
-| services | [Service](#contours.v1.Service) | repeated | Array of maps &lt;projectID:environmentID&gt; |
-
-
-
-
-
-
-<a name="contours.v1.ContourIdAndServices"></a>
-
-### ContourIdAndServices
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  | UUID |
-| services | [Service](#contours.v1.Service) | repeated | Array of maps &lt;projectID:environmentID&gt; |
-
-
-
-
-
-
-<a name="contours.v1.ContourInfo"></a>
+<a name="apps.ContourInfo"></a>
 
 ### ContourInfo
-Represents a contour
+Represents a full contour
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  | UUID |
 | name | [string](#string) |  | Contour name: Unique string |
-| services | [Service](#contours.v1.Service) | repeated | Array of maps &lt;projectID:environmentID&gt; |
+| description | [string](#string) |  |  |
+| services | [ServiceInfo](#apps.ServiceInfo) | repeated | Array of maps &lt;projectID:environmentID&gt; |
+| appId | [string](#string) |  | Applcation ID: UUID |
 
 
 
 
 
 
-<a name="contours.v1.ContourName"></a>
+<a name="apps.ContourInfoWithoutServices"></a>
 
-### ContourName
-Represents an contour name only
+### ContourInfoWithoutServices
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Application name |
+| id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| description | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="contours.v1.Service"></a>
+<a name="apps.ContourNameAndDescription"></a>
 
-### Service
+### ContourNameAndDescription
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| appId | [string](#string) |  | Applcation ID: UUID |
+
+
+
+
+
+
+<a name="apps.ContoursListOption"></a>
+
+### ContoursListOption
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| appId | [string](#string) |  | Applcation ID: UUID |
+
+
+
+
+
+
+<a name="apps.RepeatedServiceWithId"></a>
+
+### RepeatedServiceWithId
+Represents an array of services
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| contourId | [string](#string) |  |  |
+| service | [ServiceInfo](#apps.ServiceInfo) | repeated |  |
+
+
+
+
+
+
+<a name="apps.RepeatedServiceWithoutId"></a>
+
+### RepeatedServiceWithoutId
+Represents an array of services
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| contourId | [string](#string) |  |  |
+| service | [ServiceWithoutId](#apps.ServiceWithoutId) | repeated |  |
+
+
+
+
+
+
+<a name="apps.ServiceIdAndContourId"></a>
+
+### ServiceIdAndContourId
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| contourId | [string](#string) |  |  |
+| serviceId | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="apps.ServiceInfo"></a>
+
+### ServiceInfo
 Represents a service
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| project | [int64](#int64) |  | Project ID from Gitlab |
+| environment | [int64](#int64) |  | Environment ID from Gitlab |
+
+
+
+
+
+
+<a name="apps.ServiceWithoutId"></a>
+
+### ServiceWithoutId
+Represents a service without ID
 
 
 | Field | Type | Label | Description |
@@ -375,141 +777,51 @@ Represents a service
  
 
 
-<a name="contours.v1.Contours"></a>
+<a name="apps.Contours"></a>
 
 ### Contours
 Service for handling contours
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [ContourName](#contours.v1.ContourName) | [ContourInfo](#contours.v1.ContourInfo) | Use to add a whole new app |
-| Get | [ContourId](#contours.v1.ContourId) | [ContourInfo](#contours.v1.ContourInfo) | Use to get app by ProjectID |
-| List | [.common.EmptyMessage](#common.EmptyMessage) | [ContourInfo](#contours.v1.ContourInfo) stream | Use to list all apps in db |
-| Update | [ContourInfo](#contours.v1.ContourInfo) | [ContourInfo](#contours.v1.ContourInfo) | Use to update an app (add/edit contour, edit name) |
-| Delete | [ContourInfo](#contours.v1.ContourInfo) | [.common.EmptyMessage](#common.EmptyMessage) | Use to delete an app (❗️not implemented yet❗️) |
-| AddServices | [.common.EmptyMessage](#common.EmptyMessage) | [.common.EmptyMessage](#common.EmptyMessage) | Use to add a services to the contour |
+| Create | [ContourNameAndDescription](#apps.ContourNameAndDescription) | [ContourInfoWithoutServices](#apps.ContourInfoWithoutServices) | Use to add a whole new app |
+| Get | [ContourId](#apps.ContourId) | [ContourInfo](#apps.ContourInfo) | Use to get app by ProjectID |
+| List | [ContoursListOption](#apps.ContoursListOption) | [ContourInfo](#apps.ContourInfo) stream | Use to list all apps in db |
+| Update | [ContourInfoWithoutServices](#apps.ContourInfoWithoutServices) | [ContourInfoWithoutServices](#apps.ContourInfoWithoutServices) | Use to update an app (add/edit contour, edit name) |
+| Delete | [ContourIdAndName](#apps.ContourIdAndName) | [.common.EmptyMessage](#common.EmptyMessage) | Use to delete an app (❗️not implemented yet❗️) |
+| AddServices | [RepeatedServiceWithoutId](#apps.RepeatedServiceWithoutId) | [.common.EmptyMessage](#common.EmptyMessage) | Use to add a services to the contour |
+| RemoveService | [ServiceIdAndContourId](#apps.ServiceIdAndContourId) | [.common.EmptyMessage](#common.EmptyMessage) | Use to rmove services from the contour |
 
  
 
 
 
-<a name="users/users.v1.proto"></a>
+<a name="apps/applications/applications.v1.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## users/users.v1.proto
-This file has messages for describing authentication
-
-
-<a name="users.v1.UserCreds"></a>
-
-### UserCreds
-Represents credentials (username and password)
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| username | [string](#string) |  | Username: unix-like |
-| password | [string](#string) |  | Password |
-
-
-
-
-
-
-<a name="users.v1.UserId"></a>
-
-### UserId
-Represents user ID only
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  | UUID |
-
-
-
-
-
-
-<a name="users.v1.UserInfo"></a>
-
-### UserInfo
-Represents the user without sensitive data
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  | UUID |
-| username | [string](#string) |  | Username: unix-like |
-
-
-
-
-
-
-<a name="users.v1.UserInfoWithSensitive"></a>
-
-### UserInfoWithSensitive
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  | UUID |
-| username | [string](#string) |  | Username: unix-like |
-| password | [string](#string) |  | Password |
-
-
-
-
-
-
-<a name="users.v1.UserName"></a>
-
-### UserName
-Represents username only
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| username | [string](#string) |  | Username |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="users.v1.Authentication"></a>
-
-### Authentication
-Service for handling users
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| Create | [UserCreds](#users.v1.UserCreds) | [UserInfo](#users.v1.UserInfo) | Use to create a user |
-| Update | [UserInfoWithSensitive](#users.v1.UserInfoWithSensitive) | [UserInfo](#users.v1.UserInfo) |  |
-| Get | [UserId](#users.v1.UserId) | [UserInfo](#users.v1.UserInfo) |  |
-| List | [UserName](#users.v1.UserName) | [UserInfo](#users.v1.UserInfo) stream |  |
-| SignUp | [UserCreds](#users.v1.UserCreds) | [UserInfo](#users.v1.UserInfo) | Use to sign up |
-
- 
-
-
-
-<a name="applications/applications.v1.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## applications/applications.v1.proto
+## apps/applications/applications.v1.proto
 This file has messages for describing applications
 
 
-<a name="applications.v1.AppId"></a>
+<a name="apps.AppFullInfo"></a>
+
+### AppFullInfo
+Represents an application with contours
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | UUID |
+| name | [string](#string) |  | Application name: Unique string |
+| description | [string](#string) |  | Application brief description |
+| contour | [ContourInfo](#apps.ContourInfo) | repeated | Map: &lt;contour name: [services]&gt; |
+
+
+
+
+
+
+<a name="apps.AppId"></a>
 
 ### AppId
 Represents an application UUID only
@@ -524,9 +836,41 @@ Represents an application UUID only
 
 
 
-<a name="applications.v1.AppInfo"></a>
+<a name="apps.AppIdAndName"></a>
 
-### AppInfo
+### AppIdAndName
+Represents an application name and id
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | UUID |
+| name | [string](#string) |  | Application name: Unique string |
+
+
+
+
+
+
+<a name="apps.AppNameAndDescription"></a>
+
+### AppNameAndDescription
+Represents an application name only
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  | Application name |
+| description | [string](#string) |  | Application brief description |
+
+
+
+
+
+
+<a name="apps.AppWithoutContours"></a>
+
+### AppWithoutContours
 Represents a application
 
 
@@ -534,54 +878,22 @@ Represents a application
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  | UUID |
 | name | [string](#string) |  | Application name: Unique string |
-| contour | [Contour](#applications.v1.Contour) | repeated | Map: &lt;contour name: [services]&gt; |
+| description | [string](#string) |  | Application brief description |
 
 
 
 
 
 
-<a name="applications.v1.AppName"></a>
+<a name="apps.ListOptions"></a>
 
-### AppName
-Represents an application name only
+### ListOptions
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Application name |
-
-
-
-
-
-
-<a name="applications.v1.Contour"></a>
-
-### Contour
-Represents a contour (the whole environment)
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | String |
-| service | [Service](#applications.v1.Service) | repeated | Array of maps &lt;projectID:environmentID&gt; |
-
-
-
-
-
-
-<a name="applications.v1.Service"></a>
-
-### Service
-Represents a service
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| project | [int64](#int64) |  | Project ID from Gitlab |
-| environment | [int64](#int64) |  | Environment ID from Gitlab |
+| added | [bool](#bool) |  |  |
 
 
 
@@ -594,103 +906,18 @@ Represents a service
  
 
 
-<a name="applications.v1.Applications"></a>
+<a name="apps.Applications"></a>
 
 ### Applications
 Service for handling applications
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [AppName](#applications.v1.AppName) | [AppInfo](#applications.v1.AppInfo) | Use to add a whole new app |
-| Get | [AppId](#applications.v1.AppId) | [AppInfo](#applications.v1.AppInfo) | Use to get app by ProjectID |
-| List | [.common.EmptyMessage](#common.EmptyMessage) | [AppInfo](#applications.v1.AppInfo) stream | Use to list all apps in db |
-| Update | [AppInfo](#applications.v1.AppInfo) | [AppInfo](#applications.v1.AppInfo) | Use to update an app (add/edit contour, edit name) |
-| Delete | [AppInfo](#applications.v1.AppInfo) | [.common.EmptyMessage](#common.EmptyMessage) | Use to delete an app (❗️not implemented yet❗️) |
-
- 
-
-
-
-<a name="authorization/authorization.v1.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## authorization/authorization.v1.proto
-This file has messages for describing authorization
-
- 
-
- 
-
- 
-
-
-<a name="authorization.v1.Authorization"></a>
-
-### Authorization
-Service for handling authorization
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| RefreshToken | [.common.EmptyMessage](#common.EmptyMessage) | [.common.EmptyMessage](#common.EmptyMessage) | Use to refresh access token |
-
- 
-
-
-
-<a name="authentication/authentication.v1.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## authentication/authentication.v1.proto
-This file has messages for describing authentication
-
-
-<a name="authentication.v1.UserCreds"></a>
-
-### UserCreds
-Represents credentials
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| username | [string](#string) |  | Username: unix-like |
-| password | [string](#string) |  | Password |
-
-
-
-
-
-
-<a name="authentication.v1.UserInfo"></a>
-
-### UserInfo
-Represents the user without sensitive data
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  | UUID |
-| username | [string](#string) |  | Username: unix-like |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="authentication.v1.Authentication"></a>
-
-### Authentication
-Service for handling authentication
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| SignIn | [UserCreds](#authentication.v1.UserCreds) | [UserInfo](#authentication.v1.UserInfo) | Use to sign in |
-| SignUp | [UserCreds](#authentication.v1.UserCreds) | [UserInfo](#authentication.v1.UserInfo) | Use to sign up |
+| Create | [AppNameAndDescription](#apps.AppNameAndDescription) | [AppWithoutContours](#apps.AppWithoutContours) | Use to add a whole new app |
+| Get | [AppId](#apps.AppId) | [AppFullInfo](#apps.AppFullInfo) | Use to get app by ProjectID |
+| List | [ListOptions](#apps.ListOptions) | [AppWithoutContours](#apps.AppWithoutContours) stream | Use to list all apps in db |
+| Update | [AppWithoutContours](#apps.AppWithoutContours) | [AppWithoutContours](#apps.AppWithoutContours) | Use to update an app (add/edit contour, edit name) |
+| Delete | [AppIdAndName](#apps.AppIdAndName) | [.common.EmptyMessage](#common.EmptyMessage) | Use to delete an app |
 
  
 

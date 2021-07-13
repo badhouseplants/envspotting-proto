@@ -1,7 +1,7 @@
 /// This file has messages for describing authorization
 syntax = "proto3";
-package authorization;
-option go_package = "github.com/allanger/gitlab-environment-aggregator/models/authorization";
+package users;
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/authorization";
 import "common/common.v1.proto";
 
 /**
