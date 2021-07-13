@@ -1,7 +1,7 @@
 /// This file has messages for describing gitlab environments
 syntax = "proto3";
-package gitlab_aggregator.v1;
-option go_package = "github.com/allanger/gitlab-environment-aggregator/api/environments";
+package gitlab;
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/external/gitlab/environments";
 
 /**
  * Service for handling environments
@@ -18,7 +18,7 @@ service Environments {
  * Represents a Gitlab Environment ID
 */
 message EnvironmentID {
-  int64 projectId = 1; // Gitlab Project ID
+  int64 project_id = 1; // Gitlab Project ID
   int64 id = 2; // Gitlab Environment Id
 }
 
@@ -26,7 +26,7 @@ message EnvironmentID {
  * Represents a Gitlab Environment name
 */
 message EnvironmentName {
-  int64 projectId = 1; // Gitlab Project ID
+  int64 project_id = 1; // Gitlab Project ID
   string name = 2; // Gitlab Environment name
 }
 
@@ -38,11 +38,11 @@ message EnvironmentInfo {
   string name = 2; // Gitlab Environment name
   string state = 3; // Gitlab Environment state
   string url = 4; // Gitlab Environment external URL
-  string ref = 5; // Gitlab Environment commit ref
+  string ref = 5; // Gitlab Environment commit  
   string sha = 6; // Gitlab Environment commit SHA
-  string ciStatus = 7; // Gitlab Environment Gitlab-CI status
-  int64 ciId = 8; // Gitlab Environment Gitlab-CI ID
-  int64 userId = 9; // Gitlab Environment Gitlab-CI trigger user ID
-  string userName = 10; // Gitlab Environment Gitlab-CI trigger user name
-  string updatedAd = 11; // Gitlab Environment update time
+  string ci_status = 7; // Gitlab Environment Gitlab-CI status
+  int64 ci_id = 8; // Gitlab Environment Gitlab-CI ID
+  int64 user_id = 9; // Gitlab Environment Gitlab-CI trigger user ID
+  string user_name = 10; // Gitlab Environment Gitlab-CI trigger user name
+  string updated_at = 11; // Gitlab Environment update time
 }
