@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: badhouseplants/envspotting-go-proto
-          ref: main
+          ref: dev
           path: go-proto
 
       - name: Copy proto defenitions
