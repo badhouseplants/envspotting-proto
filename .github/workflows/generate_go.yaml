@@ -22,10 +22,17 @@ jobs:
         with:
           repository: badhouseplants/envspotting-go-proto
           ref: main
+          submodules: true
 
-      - name: check-dir
-        run: ls -la
+      - name: Choose submodule branch
+        working-directory: proto
+        run: git checkout ${{ github.ref }}
 
-      - name: Ensure models dir is created
-        working-directory: envspotting-go=proto
-        run: mkdir -p models
+      - name: Build docker image
+        run : docker build -t generate-go-code .
+
+      - name: Generate go code
+        run: make docker-protobuf
+
+      - name: check 
+        run: ls models
