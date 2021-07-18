@@ -5,6 +5,9 @@ on:
   push:
     paths:
       - "proto/**"
+    branches-ignore:
+      - main
+      - dev
 
 jobs:
   build:
