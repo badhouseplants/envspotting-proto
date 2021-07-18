@@ -27,6 +27,8 @@ jobs:
       - name: Checkout go-proto repo
         uses: actions/checkout@v2
         with:
+          persist-credentials: false
+          fetch-depth: 0
           repository: badhouseplants/envspotting-go-proto
           ref: dev
           path: go-proto
