@@ -26,6 +26,10 @@ jobs:
           ref: main
           path: go-proto
 
+      - run: ls
+
+      - run: pwd 
+       
       - name: Copy proto defenitions
         run: cp -R ../proto .
 
