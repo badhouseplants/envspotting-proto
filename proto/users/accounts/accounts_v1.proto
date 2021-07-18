@@ -1,4 +1,4 @@
-/// This file has messages for describing authentication
+/// Messages for describing authentication
 syntax = "proto3";
 package users;
 import "common/common_v1.proto";
