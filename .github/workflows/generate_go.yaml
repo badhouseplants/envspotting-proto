@@ -1,0 +1,20 @@
+---
+name: Lint
+
+on:
+  push:
+    tags:
+      - v*.*.*
+    branches:
+      - main
+      - dev
+      - external-gitlab-service
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run dockerized lint 
+        run: make docker-lint
