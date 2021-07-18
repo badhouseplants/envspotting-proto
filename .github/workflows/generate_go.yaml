@@ -47,13 +47,5 @@ jobs:
         working-directory: go-proto
         run: rm -rf proto
 
-      - name: Pushes to another repository
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.GO_TOKEN_GITHUB }}
-        with:
-          source-directory: 'go-proto'
-          destination-github-username: 'badhouseplants'
-          destination-repository-name: 'envspotting-go-proto'
-          user-email: "dev.allanger@gmail.com"
-          target-branch: dev
+      - run: git add . && git commit -m "check" && git push
+        working-directory: go-proto
