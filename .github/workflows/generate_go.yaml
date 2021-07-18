@@ -3,8 +3,6 @@ name: Generate GO code
 
 on:
   push:
-    tags:
-      - v*.*.*
 
 jobs:
   lint:
@@ -30,7 +28,7 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
           repository: badhouseplants/envspotting-go-proto
-          ref: dev
+          ref: main
           path: go-proto
 
       - name: Copy proto defenitions
@@ -49,5 +47,11 @@ jobs:
         working-directory: go-proto
         run: rm -rf proto
 
-      - run: git add . && git commit -m "check" && git push
+      - name: Push to main
         working-directory: go-proto
+        run: |
+          git config --global user.email "dev.allanger@gmail.com"
+          git config --global user.name "Allen Languor"
+          git add .
+          git commit -m "${{ github.event.head_commit.message }}"
+          git push
