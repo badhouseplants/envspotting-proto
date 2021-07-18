@@ -43,11 +43,19 @@ jobs:
         working-directory: go-proto
         run: make docker-protobuf
 
-      - run: echo ${{ github.event.head_commit.message }}
-      # - name: Commit files
-        # working-directory: go-proto
-        # run: |
-          # git config --local user.email "dev.allanger[bot]@gmail.com"
-          # git config --local user.name "github-actions[bot]"
-          # git add .
-          # git commit -m ""
+      - name: Commit files
+        working-directory: go-proto
+        run: |
+          git config --local user.email "dev.allanger@gmail.com"
+          git config --local user.name "github-actions"
+          git add .
+          git commit -m "${{ github.event.head_commit.message }}"
+          git tag -a ${GITHUB_REF##*/} -m "${{ github.event.head_commit.message }}"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          directory: go-proto
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          tags: true
