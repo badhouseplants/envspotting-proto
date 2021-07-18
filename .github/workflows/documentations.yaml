@@ -3,8 +3,8 @@ name: Generate documentation
 
 on:
   push:
-    paths:
-      - "proto/**"
+    # paths:
+      # - "proto/**"
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
       - name: Update documentation
-        run: make doceker-docs-gen
+        run: make docker-docs-gen
 
       - name: Commit files
         run: |
