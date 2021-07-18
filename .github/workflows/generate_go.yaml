@@ -16,6 +16,8 @@ jobs:
         run: make docker-lint
   update-go-package:
     runs-on: ubuntu-latest
+    needs: 
+      - lint
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -25,8 +27,7 @@ jobs:
           submodules: true
 
       - name: Choose submodule branch
-        working-directory: proto
-        run: git checkout ${GITHUB_REF##*/}
+        run: $(cd proto && git checkout ${GITHUB_REF##*/})
 
       - name: Build docker image
         run : docker build -t generate-go-code .
