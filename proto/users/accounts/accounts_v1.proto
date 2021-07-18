@@ -2,6 +2,7 @@
 syntax = "proto3";
 package users;
 import "common/common_v1.proto";
+import "apps/applications/applications_v1.proto";
 option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/accounts";
 
 /**
@@ -49,19 +50,19 @@ message AccountName {
 message AccountInfo {
   string id = 1; // UUID
   string username = 2; // username: unix-like
-  string gitlabToken = 3;
+  string gitlab_token = 3;
 }
 
 message AccountInfoWithSensitive { 
   string id = 1; // UUID
   string username = 2; // username: unix-like
   string password = 3; // Password
-  string gitlabToken = 4;
+  string gitlab_token = 4;
 }
 
 message PasswordUpdate {
   string id = 1;
   string username = 2;
-  string oldPassword = 3;
-  string newPassword = 4;
+  string old_password = 3;
+  string new_password = 4;
 }
