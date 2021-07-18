@@ -1,9 +1,9 @@
 /// This file has messages for describing applications
 syntax = "proto3";
 package users;
-option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/rights/";
 import "apps/applications/applications_v1.proto";
 import "common/common_v1.proto";
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/rights/";
 
 /**
  * Service for handling access rights
@@ -17,9 +17,9 @@ service Rights {
 }
 
 enum AccessRights { 
-  READ = 0;
-  WRITE = 1;
-  DELETE = 2;
+  ACCESS_RIGHTS_READ_UNSPECIFIED = 0;
+  ACCESS_RIGHTS_WRITE = 1;
+  ACCESS_RIGHTS_DELETE = 2;
 }
 
 message AccessRuleId { 
@@ -28,22 +28,22 @@ message AccessRuleId {
 
 message AccessRuleIdAndRight { 
   string id = 1;
-  AccessRights accessRight = 3;
+  AccessRights access_right = 3;
 }
 
 message AccessRuleWithoutId {
-  string userId = 1;
-  string applicationId = 2;
-  AccessRights accessRight = 3;
+  string user_id = 1;
+  string application_id = 2;
+  AccessRights access_right = 3;
 }
 
 message AccessRuleInfo {
   string id = 1;
-  string userId = 2;
-  string applicationId = 3;
-  AccessRights accessRight = 4;
+  string user_d = 2;
+  string application_id = 3;
+  AccessRights access_right = 4;
 }
 
 message ListOptions { 
-  apps.AppId appId = 1;
+  apps.AppId app_id = 1;
 }

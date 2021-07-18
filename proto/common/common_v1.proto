@@ -6,4 +6,5 @@ option go_package = "github.com/allanger/gitlab-environment-aggregator/models/co
 /**
  * Represents an empty message 
 */
-message EmptyMessage {} // Use when no content's needed
+message EmptyMessage {
+} // Use when no content's needed

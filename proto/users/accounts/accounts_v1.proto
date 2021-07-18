@@ -1,8 +1,8 @@
 /// This file has messages for describing authentication
 syntax = "proto3";
 package users;
-option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/accounts";
 import "common/common_v1.proto";
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/accounts";
 
 /**
  * Service for handling accounts
@@ -58,6 +58,6 @@ message AccountInfoWithSensitive {
 message PasswordUpdate {
   string id = 1;
   string username = 2;
-  string oldPassword = 3;
-  string newPassword = 4;
+  string old_password = 3;
+  string new_password = 4;
 }
