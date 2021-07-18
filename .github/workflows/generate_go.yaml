@@ -24,15 +24,20 @@ jobs:
         with:
           repository: badhouseplants/envspotting-go-proto
           ref: main
-          submodules: true
 
-      - name: Update submodule 
-        run: git submodule update
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: badhouseplants/envspotting-proto
+          ref: ${{ github.ref }}
+          path: 'proto'
 
-      - name: Choose submodule branch
-        # working-directory: ./proto
-        # run: git checkout ${GITHUB_REF##*/}
-        run: cd proto && git branch -a && cd ..
+      - name: ls 
+        run: ls
+
+      - name: pwd
+        run: pwd
+
 
       - name: Build docker image
         run : docker build -t generate-go-code .
