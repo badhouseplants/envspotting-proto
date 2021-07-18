@@ -25,7 +25,8 @@ jobs:
       
       - name: Copy proto defenitions
         working-directory: go-proto
-        run: cp -R ../proto .
+        run: ls ..
+        # run: cp -R ../proto .
 
       - name: Build docker image
         working-directory: go-proto
