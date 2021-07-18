@@ -19,25 +19,22 @@ jobs:
     needs:
       - lint
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          repository: badhouseplants/envspotting-go-proto
-          ref: main
-          path: go-proto
 
-      - run: ls
-
-      - run: pwd 
-       
+      - name: Clone envspotting-go-proto repo
+        run: git clone https://github.com/badhouseplants/envspotting-go-proto.git go-proto
+      
       - name: Copy proto defenitions
+        working-directory: go-proto
         run: cp -R ../proto .
 
       - name: Build docker image
+        working-directory: go-proto
         run: docker build -t generate-go-code .
 
       - name: Generate go code
+        working-directory: go-proto
         run: make docker-protobuf
 
       - name: check
+        working-directory: go-proto
         run: ls models
