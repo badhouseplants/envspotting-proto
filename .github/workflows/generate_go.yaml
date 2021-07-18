@@ -1,10 +1,10 @@
 ---
-name: Lint
+name: Generate GO code
 
 on:
   push:
-    tags:
-      - v*.*.*
+    # tags:
+      # - v*.*.*
 
 jobs:
   lint:
@@ -12,5 +12,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Run dockerized lint 
+      - name: Run dockerized lint
         run: make docker-lint
+  update-go-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: badhouseplants/envspotting-go-proto
+          ref: main
+
+      - name: check-dir
+        run: ls -la
+
+      - name: Ensure models dir is created
+        working-directory: envspotting-go=proto
+        run: mkdir -p models

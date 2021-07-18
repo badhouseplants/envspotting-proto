@@ -3,7 +3,7 @@ syntax = "proto3";
 package users;
 import "apps/applications/applications_v1.proto";
 import "common/common_v1.proto";
-option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/rights/";
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/rights";
 
 /**
  * Service for handling access rights

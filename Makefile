@@ -1,5 +1,12 @@
 .PHONY: protoc-docs-gen
 
+protobuf:
+	protoc	--go_out=./models/  --go_opt=paths=source_relative \
+		--go-grpc_out=./models/ --go-grpc_opt=paths=source_relative \
+		--proto_path=./proto \
+		$$(find ./proto -type f -iname "*.proto")
+
+
 protoc-docs-gen:
 	protoc \
 		--proto_path=./proto \
@@ -20,3 +27,6 @@ docker-lint:
 		--workdir /workspace \
 		yoheimuta/protolint lint \
 		$$(find . -type f -iname "*.proto")
+
+docker-generate-go-code: 
+	docker run -v `pwd`:/defs namely/protoc-all -f $$(find . -type f -iname "*.proto") -l go
