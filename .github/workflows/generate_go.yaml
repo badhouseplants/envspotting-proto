@@ -43,6 +43,11 @@ jobs:
         working-directory: go-proto
         run: make docker-protobuf
 
-      - name: check
-        working-directory: go-proto
-        run: ls models
+      - run: echo ${{ github.event.head_commit.message }}
+      # - name: Commit files
+        # working-directory: go-proto
+        # run: |
+          # git config --local user.email "dev.allanger[bot]@gmail.com"
+          # git config --local user.name "github-actions[bot]"
+          # git add .
+          # git commit -m ""
