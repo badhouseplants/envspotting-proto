@@ -2,7 +2,7 @@
 syntax = "proto3";
 package users;
 import "common/common_v1.proto";
-option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/accounts";
+option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users/accounts";
 
 /**
  * Service for handling accounts

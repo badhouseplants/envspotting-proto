@@ -2,7 +2,7 @@
 syntax = "proto3";
 package apps;
 import "common/common_v1.proto";
-option go_package = "github.com/allanger/gitlab-environment-aggregator/models/apps/contours";
+option go_package = "github.com/badhouseplants/envspotting-go-proto/models/apps/contours";
 
 /**
  * Service for handling contours

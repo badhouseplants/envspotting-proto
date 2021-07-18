@@ -3,7 +3,7 @@ syntax = "proto3";
 package users;
 import "common/common_v1.proto";
 import "users/accounts/accounts_v1.proto";
-option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/authentication";
+option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users/authentication";
 
 /**
  * Service for handling authentication
