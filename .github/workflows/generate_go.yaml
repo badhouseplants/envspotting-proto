@@ -4,7 +4,7 @@ name: Generate GO code
 on:
   push:
     tags:
-    - v*.*.*
+      - v*.*.*
 
 jobs:
   lint:
@@ -43,17 +43,21 @@ jobs:
         working-directory: go-proto
         run: make docker-protobuf
 
+      - name: Remove proto dir
+        working-directory: go-proto
+        run: rm -rf proto
+
       - name: Push to main
         working-directory: go-proto
         run: |
-          git config --local user.email "dev.allanger@gmail.com"
-          git config --local user.name "Allen Languor"
+          git config --global user.email "dev.allanger@gmail.com"
+          git config --global user.name "Allen Languor"
           git add .
           git commit -m "${{ github.event.head_commit.message }}"
-          git push --set-upstream https://allanger:$GO_GITHUB_TOKEN@github.com/badhouseplants/envspotting-go-proto main
+          git push --set-upstream https://allanger:$GO_GITHUB_TOKEN@github.com/badhouseplants/envspotting-go-proto dev
 
       - name: Create tag
         working-directory: go-proto
         run: |
           git tag -a ${GITHUB_REF##*/} -m "${{ github.event.head_commit.message }}"
-          git push --set-upstream https://user:$GO_GITHUB_TOKEN@github.com/owner/my-repo push origin ${GITHUB_REF##*/}
+          git push --set-upstream https://user:$GO_GITHUB_TOKEN@github.com/owner/my-repo push origin ${GITHUB_REF##*/}-dev
