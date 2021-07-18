@@ -47,17 +47,13 @@ jobs:
         working-directory: go-proto
         run: rm -rf proto
 
-      - name: Push to main
-        working-directory: go-proto
-        run: |
-          git config --global user.email "dev.allanger@gmail.com"
-          git config --global user.name "Allen Languor"
-          git add .
-          git commit -m "${{ github.event.head_commit.message }}"
-          git push --set-upstream https://allanger:${{ secrets.GO_GITHUB_TOKEN }}@github.com/badhouseplants/envspotting-go-proto dev
-
-      - name: Create tag
-        working-directory: go-proto
-        run: |
-          git tag -a ${GITHUB_REF##*/} -m "${{ github.event.head_commit.message }}"
-          git push --set-upstream https://allanger:${{ secrets.GO_GITHUB_TOKEN }}@github.com/badhouseplants/envspotting-go-proto origin ${GITHUB_REF##*/}-dev
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.GO_TOKEN_GITHUB }}
+        with:
+          source-directory: 'go-proto'
+          destination-github-username: 'badhouseplants'
+          destination-repository-name: 'envspotting-go-proto'
+          user-email: "dev.allanger@gmail.com"
+          target-branch: dev
