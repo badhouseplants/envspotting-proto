@@ -47,7 +47,7 @@ jobs:
         working-directory: go-proto
         run: |
           git config --local user.email "dev.allanger@gmail.com"
-          git config --local user.name "github-actions"
+          git config --local user.name "Allen Languor"
           git add .
           git commit -m "${{ github.event.head_commit.message }}"
           git push --set-upstream https://allanger:$GO_GITHUB_TOKEN@github.com/badhouseplants/envspotting-go-proto main
