@@ -2,7 +2,7 @@
 syntax = "proto3";
 package users;
 option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/authorization";
-import "common/common.v1.proto";
+import "common/common_v1.proto";
 
 /**
  * Service for handling authorization
