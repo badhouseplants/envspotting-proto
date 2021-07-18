@@ -50,10 +50,10 @@ jobs:
           git config --local user.name "github-actions"
           git add .
           git commit -m "${{ github.event.head_commit.message }}"
-          git --set-upstream https://allanger:$GO_GITHUB_TOKEN@github.com/badhouseplants/envspotting-go-proto main
+          git push --set-upstream https://allanger:$GO_GITHUB_TOKEN@github.com/badhouseplants/envspotting-go-proto main
 
       - name: Create tag
         working-directory: go-proto
         run: |
           git tag -a ${GITHUB_REF##*/} -m "${{ github.event.head_commit.message }}"
-          git --set-upstream https://user:$GO_GITHUB_TOKEN@github.com/owner/my-repo push origin ${GITHUB_REF##*/}
+          git push --set-upstream https://user:$GO_GITHUB_TOKEN@github.com/owner/my-repo push origin ${GITHUB_REF##*/}
