@@ -27,7 +27,9 @@ jobs:
           submodules: true
 
       - name: Choose submodule branch
-        run: $(cd proto && git checkout ${GITHUB_REF##*/})
+        working-directory: ./proto
+        # run: git checkout ${GITHUB_REF##*/}
+        run: ls -la
 
       - name: Build docker image
         run : docker build -t generate-go-code .
