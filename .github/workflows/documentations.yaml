@@ -4,7 +4,7 @@ name: Generate documentation
 on:
   push:
     paths:
-      - "proto-project/**"
+      - "proto/**"
 
 jobs:
   build:
