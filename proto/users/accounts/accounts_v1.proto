@@ -1,8 +1,9 @@
-/// Messages for describing authentication
+/// This file has messages for describing authentication
 syntax = "proto3";
 package users;
 import "common/common_v1.proto";
-option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users/accounts";
+import "apps/applications/applications_v1.proto";
+option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/accounts";
 
 /**
  * Service for handling accounts
@@ -17,6 +18,8 @@ service Accounts {
   rpc Get(AccountId) returns (AccountInfo) {}
   /// List Accounts
   rpc List(AccountName) returns (stream AccountInfo) {}
+  /// Add an app to the user app list
+  rpc AddAppToUser(apps.AppId) returns (common.EmptyMessage) {}
 }
 
 /**
@@ -47,12 +50,14 @@ message AccountName {
 message AccountInfo {
   string id = 1; // UUID
   string username = 2; // username: unix-like
+  string gitlab_token = 3;
 }
 
 message AccountInfoWithSensitive { 
   string id = 1; // UUID
   string username = 2; // username: unix-like
   string password = 3; // Password
+  string gitlab_token = 4;
 }
 
 message PasswordUpdate {
