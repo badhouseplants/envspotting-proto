@@ -5,6 +5,15 @@ option go_package = "github.com/badhouseplants/envspotting-go-proto/models/commo
 
 /**
  * Represents an empty message 
+ * Use when no content's needed
 */
 message EmptyMessage {
-} // Use when no content's needed
+} 
+
+/**
+ * Represents a pagination message 
+*/
+message Paging {
+  int32 page = 1; // Page number or offset
+  int32 count = 2; // Units count or limit 
+}

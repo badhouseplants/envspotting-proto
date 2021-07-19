@@ -17,7 +17,7 @@ service Accounts {
   /// Account to get a Account by ID
   rpc Get(AccountId) returns (AccountInfo) {}
   /// List Accounts
-  rpc List(AccountName) returns (stream AccountInfo) {}
+  rpc List(ListOptions) returns (stream AccountInfo) {}
   /// Add an app to the user app list
   rpc AddAppToUser(apps.AppId) returns (common.EmptyMessage) {}
 }
@@ -65,4 +65,9 @@ message PasswordUpdate {
   string username = 2;
   string old_password = 3;
   string new_password = 4;
+}
+
+message ListOptions { 
+  AccountName account_name = 1;
+  common.Paging paging = 2;
 }
