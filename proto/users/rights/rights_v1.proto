@@ -13,7 +13,7 @@ service Rights {
   rpc Update(AccessRuleIdAndRight) returns (AccessRuleIdAndRight) {}
   rpc Delete(AccessRuleId) returns (common.EmptyMessage) {}
   rpc Get(AccessRuleId) returns (AccessRuleInfo) {}
-  rpc List(ListOptions) returns (stream AccessRuleInfo) {}
+  rpc List(RightsListOptions) returns (stream AccessRuleInfo) {}
 }
 
 enum AccessRights { 
@@ -44,6 +44,6 @@ message AccessRuleInfo {
   AccessRights access_right = 4;
 }
 
-message ListOptions { 
+message RightsListOptions { 
   apps.AppId app_id = 1;
 }
