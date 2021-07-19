@@ -30,6 +30,7 @@
   
 - [common/common_v1.proto](#common/common_v1.proto)
     - [EmptyMessage](#common.EmptyMessage)
+    - [Paging](#common.Paging)
   
 - [users/authentication/authentication_v1.proto](#users/authentication/authentication_v1.proto)
     - [Authentication](#users.Authentication)
@@ -42,7 +43,7 @@
     - [AccessRuleIdAndRight](#users.AccessRuleIdAndRight)
     - [AccessRuleInfo](#users.AccessRuleInfo)
     - [AccessRuleWithoutId](#users.AccessRuleWithoutId)
-    - [ListOptions](#users.ListOptions)
+    - [RightsListOptions](#users.RightsListOptions)
   
     - [AccessRights](#users.AccessRights)
   
@@ -54,6 +55,7 @@
     - [AccountInfo](#users.AccountInfo)
     - [AccountInfoWithSensitive](#users.AccountInfoWithSensitive)
     - [AccountName](#users.AccountName)
+    - [AccountsListOptions](#users.AccountsListOptions)
     - [PasswordUpdate](#users.PasswordUpdate)
   
     - [Accounts](#users.Accounts)
@@ -426,7 +428,24 @@ This file has messages for reusable common messages
 <a name="common.EmptyMessage"></a>
 
 ### EmptyMessage
-Represents an empty message
+Represents an empty message 
+Use when no content&#39;s needed
+
+
+
+
+
+
+<a name="common.Paging"></a>
+
+### Paging
+Represents a pagination message
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| page | [int32](#int32) |  | Page number or offset |
+| count | [int32](#int32) |  | Units count or limit |
 
 
 
@@ -568,9 +587,9 @@ This file has messages for describing applications
 
 
 
-<a name="users.ListOptions"></a>
+<a name="users.RightsListOptions"></a>
 
-### ListOptions
+### RightsListOptions
 
 
 
@@ -613,7 +632,7 @@ Service for handling access rights
 | Update | [AccessRuleIdAndRight](#users.AccessRuleIdAndRight) | [AccessRuleIdAndRight](#users.AccessRuleIdAndRight) |  |
 | Delete | [AccessRuleId](#users.AccessRuleId) | [.common.EmptyMessage](#common.EmptyMessage) |  |
 | Get | [AccessRuleId](#users.AccessRuleId) | [AccessRuleInfo](#users.AccessRuleInfo) |  |
-| List | [ListOptions](#users.ListOptions) | [AccessRuleInfo](#users.AccessRuleInfo) stream |  |
+| List | [RightsListOptions](#users.RightsListOptions) | [AccessRuleInfo](#users.AccessRuleInfo) stream |  |
 
  
 
@@ -707,6 +726,22 @@ Represents username only
 
 
 
+<a name="users.AccountsListOptions"></a>
+
+### AccountsListOptions
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| account_name | [AccountName](#users.AccountName) |  |  |
+| paging | [common.Paging](#common.Paging) |  |  |
+
+
+
+
+
+
 <a name="users.PasswordUpdate"></a>
 
 ### PasswordUpdate
@@ -742,7 +777,7 @@ Service for handling accounts
 | UpdateUser | [AccountInfo](#users.AccountInfo) | [AccountInfo](#users.AccountInfo) | Use to update a Account |
 | UpdatePassword | [PasswordUpdate](#users.PasswordUpdate) | [.common.EmptyMessage](#common.EmptyMessage) |  |
 | Get | [AccountId](#users.AccountId) | [AccountInfo](#users.AccountInfo) | Account to get a Account by ID |
-| List | [AccountName](#users.AccountName) | [AccountInfo](#users.AccountInfo) stream | List Accounts |
+| List | [AccountsListOptions](#users.AccountsListOptions) | [AccountInfo](#users.AccountInfo) stream | List Accounts |
 | AddAppToUser | [.apps.AppId](#apps.AppId) | [.common.EmptyMessage](#common.EmptyMessage) | Add an app to the user app list |
 
  
