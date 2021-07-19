@@ -542,7 +542,7 @@ This file has messages for describing applications
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| user_d | [string](#string) |  |  |
+| user_id | [string](#string) |  |  |
 | application_id | [string](#string) |  |  |
 | access_right | [AccessRights](#users.AccessRights) |  |  |
 
