@@ -11,7 +11,7 @@ service Accounts {
   /// Use to create a Account
   rpc Create(AccountCreds) returns (AccountInfo) {}
   /// Use to update a Account
-  rpc UpdateUsername(AccountInfo) returns (AccountInfo) {}
+  rpc UpdateUser(AccountInfo) returns (AccountInfo) {}
   rpc UpdatePassword(PasswordUpdate) returns (common.EmptyMessage) {}
   /// Account to get a Account by ID
   rpc Get(AccountId) returns (AccountInfo) {}

@@ -39,7 +39,7 @@ message AccessRuleWithoutId {
 
 message AccessRuleInfo {
   string id = 1;
-  string user_d = 2;
+  string user_id = 2;
   string application_id = 3;
   AccessRights access_right = 4;
 }
