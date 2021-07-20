@@ -277,6 +277,7 @@ Represents a full contour
 | id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 | description | [string](#string) |  |  |
+| app_id | [string](#string) |  | Applcation ID: UUID |
 
 
 
@@ -325,6 +326,7 @@ Represents an array of services
 | ----- | ---- | ----- | ----------- |
 | contour_id | [string](#string) |  |  |
 | services | [ServiceInfo](#apps.ServiceInfo) | repeated |  |
+| app_id | [string](#string) |  | Applcation ID: UUID |
 
 
 
@@ -341,6 +343,7 @@ Represents an array of services
 | ----- | ---- | ----- | ----------- |
 | contour_id | [string](#string) |  |  |
 | services | [ServiceWithoutId](#apps.ServiceWithoutId) | repeated |  |
+| app_id | [string](#string) |  | Applcation ID: UUID |
 
 
 
@@ -357,6 +360,7 @@ Represents an array of services
 | ----- | ---- | ----- | ----------- |
 | contour_id | [string](#string) |  |  |
 | service_id | [string](#string) |  |  |
+| app_id | [string](#string) |  | Applcation ID: UUID |
 
 
 
