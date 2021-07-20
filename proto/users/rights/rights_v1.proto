@@ -47,7 +47,7 @@ message AccessRuleInfo {
 }
 
 message AccessRightRequest { 
-  apps.ApplicationId application_id = 1;
+  apps.AppId application_id = 1;
   AccessRights access_right = 2;
 }
 
