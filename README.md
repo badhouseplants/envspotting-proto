@@ -516,6 +516,7 @@ Service for handling authorization
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | RefreshToken | [.common.EmptyMessage](#common.EmptyMessage) | [.common.EmptyMessage](#common.EmptyMessage) | Use to refresh access token |
+| ParseIdFromToken | [.common.EmptyMessage](#common.EmptyMessage) | [AccountId](#users.AccountId) | Use to parse user ID from token |
 
  
 
