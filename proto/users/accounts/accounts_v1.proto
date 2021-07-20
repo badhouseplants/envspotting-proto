@@ -14,8 +14,10 @@ service Accounts {
   /// Use to update a Account
   rpc UpdateUser(AccountInfo) returns (AccountInfo) {}
   rpc UpdatePassword(PasswordUpdate) returns (common.EmptyMessage) {}
-  /// Account to get a Account by ID
+  /// Use to get a Account by ID
   rpc Get(AccountId) returns (AccountInfo) {}
+  /// Use to get yourself by ID
+  rpc SelfGet(AccountId) returns (FullAccountInfo) {}
   /// List Accounts
   rpc List(AccountsListOptions) returns (stream AccountInfo) {}
   /// Add an app to the user app list
@@ -48,6 +50,11 @@ message AccountName {
  * Represents the Account without sensitive data
  */
 message AccountInfo {
+  string id = 1; // UUID
+  string username = 2; // username: unix-like
+}
+
+message FullAccountInfo {
   string id = 1; // UUID
   string username = 2; // username: unix-like
   string gitlab_token = 3;
