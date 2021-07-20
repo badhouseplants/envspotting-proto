@@ -12,7 +12,7 @@ service Accounts {
   /// Use to create a Account
   rpc Create(AccountCreds) returns (AccountInfo) {}
   /// Use to update a Account
-  rpc UpdateUser(FullAccountInfo) returns (AccountInfo) {}
+  rpc UpdateUser(FullAccountInfo) returns (FullAccountInfo) {}
   rpc UpdatePassword(PasswordUpdate) returns (common.EmptyMessage) {}
   /// Use to get a Account by ID
   rpc Get(AccountId) returns (AccountInfo) {}
