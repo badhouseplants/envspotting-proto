@@ -45,6 +45,7 @@ message ContourInfoWithoutServices {
   string id = 1;
   string name = 2; 
   string description = 3;
+  string app_id = 4; // Applcation ID: UUID
 }
 
 message ContourNameAndDescription { 
@@ -84,6 +85,7 @@ message ServiceInfo {
 message ServiceIdAndContourId { 
   string contour_id = 1;
   string service_id = 2;
+  string app_id = 3; // Applcation ID: UUID
 }
 /**
  * Represents an array of services
@@ -91,6 +93,7 @@ message ServiceIdAndContourId {
 message RepeatedServiceWithoutId { 
   string contour_id = 1;
   repeated ServiceWithoutId services = 2;
+  string app_id = 3; // Applcation ID: UUID
 }
 
 /**
@@ -99,4 +102,5 @@ message RepeatedServiceWithoutId {
 message RepeatedServiceWithId { 
   string contour_id = 1;
   repeated ServiceInfo services = 2;
+  string app_id = 3; // Applcation ID: UUID
 }
