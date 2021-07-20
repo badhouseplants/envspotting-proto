@@ -24,6 +24,11 @@ service Accounts {
   rpc AddAppToUser(apps.AppId) returns (common.EmptyMessage) {}
 }
 
+service Tokens {
+  // Use to get gitlab token
+  rpc GetGitlabTokenByAccountID(AccountId) returns (GitlabToken) {}
+}
+
 /**
  * Represents credentials (username and password)
 */
@@ -77,4 +82,8 @@ message PasswordUpdate {
 message AccountsListOptions { 
   AccountName account_name = 1;
   common.Paging paging = 2;
+}
+
+message GitlabToken  {
+  string gitlab_token = 1; // Gitlab token
 }
