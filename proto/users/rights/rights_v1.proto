@@ -9,6 +9,7 @@ option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users
  * Service for handling access rights
  */
 service Rights {  
+  rpc Init(AccessRuleWithoutId) returns (AccessRuleInfo) {}
   rpc Create(AccessRuleWithoutId) returns (AccessRuleInfo) {}
   rpc Update(AccessRuleIdAndRight) returns (AccessRuleIdAndRight) {}
   rpc Delete(AccessRuleId) returns (common.EmptyMessage) {}
