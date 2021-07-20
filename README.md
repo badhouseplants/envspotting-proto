@@ -636,6 +636,7 @@ Service for handling access rights
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
+| Init | [AccessRuleWithoutId](#users.AccessRuleWithoutId) | [AccessRuleInfo](#users.AccessRuleInfo) |  |
 | Create | [AccessRuleWithoutId](#users.AccessRuleWithoutId) | [AccessRuleInfo](#users.AccessRuleInfo) |  |
 | Update | [AccessRuleIdAndRight](#users.AccessRuleIdAndRight) | [AccessRuleIdAndRight](#users.AccessRuleIdAndRight) |  |
 | Delete | [AccessRuleId](#users.AccessRuleId) | [.common.EmptyMessage](#common.EmptyMessage) |  |
