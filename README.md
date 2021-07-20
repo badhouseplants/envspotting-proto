@@ -57,9 +57,11 @@
     - [AccountName](#users.AccountName)
     - [AccountsListOptions](#users.AccountsListOptions)
     - [FullAccountInfo](#users.FullAccountInfo)
+    - [GitlabToken](#users.GitlabToken)
     - [PasswordUpdate](#users.PasswordUpdate)
   
     - [Accounts](#users.Accounts)
+    - [Tokens](#users.Tokens)
   
 - [external/gitlab/environments/environments_v1.proto](#external/gitlab/environments/environments_v1.proto)
     - [EnvironmentID](#gitlab.EnvironmentID)
@@ -759,6 +761,21 @@ Represents username only
 
 
 
+<a name="users.GitlabToken"></a>
+
+### GitlabToken
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| gitlab_token | [string](#string) |  | Gitlab token |
+
+
+
+
+
+
 <a name="users.PasswordUpdate"></a>
 
 ### PasswordUpdate
@@ -797,6 +814,16 @@ Service for handling accounts
 | SelfGet | [AccountId](#users.AccountId) | [FullAccountInfo](#users.FullAccountInfo) | Use to get yourself by ID |
 | List | [AccountsListOptions](#users.AccountsListOptions) | [AccountInfo](#users.AccountInfo) stream | List Accounts |
 | AddAppToUser | [.apps.AppId](#apps.AppId) | [.common.EmptyMessage](#common.EmptyMessage) | Add an app to the user app list |
+
+
+<a name="users.Tokens"></a>
+
+### Tokens
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetGitlabTokenByAccountID | [AccountId](#users.AccountId) | [GitlabToken](#users.GitlabToken) | Use to get gitlab token |
 
  
 
