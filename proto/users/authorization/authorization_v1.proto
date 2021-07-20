@@ -12,7 +12,7 @@ service Authorization {
   /// Use to refresh access token
   rpc RefreshToken(common.EmptyMessage) returns (common.EmptyMessage) {}
   /// Use To validate jwt token
-  rpc RefreshToken(common.EmptyMessage) returns (common.EmptyMessage) {}
+  rpc ValidateToken(common.EmptyMessage) returns (common.EmptyMessage) {}
   /// Use to parse user ID from token
   rpc ParseIdFromToken(common.EmptyMessage) returns (users.AccountId) {}
 }
