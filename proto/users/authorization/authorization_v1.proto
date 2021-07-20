@@ -2,6 +2,7 @@
 syntax = "proto3";
 package users;
 import "common/common_v1.proto";
+import "users/accounts/accounts_v1.proto";
 option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users/authorization";
 
 /**
@@ -10,4 +11,6 @@ option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users
 service Authorization {  
   /// Use to refresh access token
   rpc RefreshToken(common.EmptyMessage) returns (common.EmptyMessage) {}
+  /// Use to parse user ID from token
+  rpc ParseIdFromToken(common.EmptyMessage) returns (users.AccountId) {}
 }
