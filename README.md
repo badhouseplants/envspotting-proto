@@ -791,7 +791,7 @@ Service for handling accounts
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Create | [AccountCreds](#users.AccountCreds) | [AccountInfo](#users.AccountInfo) | Use to create a Account |
-| UpdateUser | [AccountInfo](#users.AccountInfo) | [AccountInfo](#users.AccountInfo) | Use to update a Account |
+| UpdateUser | [FullAccountInfo](#users.FullAccountInfo) | [AccountInfo](#users.AccountInfo) | Use to update a Account |
 | UpdatePassword | [PasswordUpdate](#users.PasswordUpdate) | [.common.EmptyMessage](#common.EmptyMessage) |  |
 | Get | [AccountId](#users.AccountId) | [AccountInfo](#users.AccountInfo) | Use to get a Account by ID |
 | SelfGet | [AccountId](#users.AccountId) | [FullAccountInfo](#users.FullAccountInfo) | Use to get yourself by ID |
