@@ -15,6 +15,7 @@ service Rights {
   rpc Delete(AccessRuleId) returns (common.EmptyMessage) {}
   rpc Get(AccessRuleId) returns (AccessRuleInfo) {}
   rpc List(RightsListOptions) returns (stream AccessRuleInfo) {}
+  rpc CheckRight(AccessRightRequest) returns (common.EmptyMessage) {}
 }
 
 enum AccessRights { 
@@ -43,6 +44,11 @@ message AccessRuleInfo {
   string user_id = 2;
   string application_id = 3;
   AccessRights access_right = 4;
+}
+
+message AccessRightRequest { 
+  apps.ApplicationId application_id = 1;
+  AccessRights access_right = 2;
 }
 
 message RightsListOptions { 
