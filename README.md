@@ -39,6 +39,7 @@
     - [Authorization](#users.Authorization)
   
 - [users/rights/rights_v1.proto](#users/rights/rights_v1.proto)
+    - [AccessRightRequest](#users.AccessRightRequest)
     - [AccessRuleId](#users.AccessRuleId)
     - [AccessRuleIdAndRight](#users.AccessRuleIdAndRight)
     - [AccessRuleInfo](#users.AccessRuleInfo)
@@ -529,6 +530,22 @@ Service for handling authorization
 This file has messages for describing applications
 
 
+<a name="users.AccessRightRequest"></a>
+
+### AccessRightRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| application_id | [apps.AppId](#apps.AppId) |  |  |
+| access_right | [AccessRights](#users.AccessRights) |  |  |
+
+
+
+
+
+
 <a name="users.AccessRuleId"></a>
 
 ### AccessRuleId
@@ -642,6 +659,7 @@ Service for handling access rights
 | Delete | [AccessRuleId](#users.AccessRuleId) | [.common.EmptyMessage](#common.EmptyMessage) |  |
 | Get | [AccessRuleId](#users.AccessRuleId) | [AccessRuleInfo](#users.AccessRuleInfo) |  |
 | List | [RightsListOptions](#users.RightsListOptions) | [AccessRuleInfo](#users.AccessRuleInfo) stream |  |
+| CheckRight | [AccessRightRequest](#users.AccessRightRequest) | [.common.EmptyMessage](#common.EmptyMessage) |  |
 
  
 
