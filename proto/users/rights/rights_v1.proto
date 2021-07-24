@@ -58,7 +58,7 @@ message RightsListOptions {
 }
 
 message Applications {
-  repeated string applications = 1;
+  string applications = 1;
 }
 
 message AvailableAppsListOptions {
