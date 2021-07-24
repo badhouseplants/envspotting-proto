@@ -44,6 +44,8 @@
     - [AccessRuleIdAndRight](#users.AccessRuleIdAndRight)
     - [AccessRuleInfo](#users.AccessRuleInfo)
     - [AccessRuleWithoutId](#users.AccessRuleWithoutId)
+    - [Applications](#users.Applications)
+    - [AvailableAppsListOptions](#users.AvailableAppsListOptions)
     - [RightsListOptions](#users.RightsListOptions)
   
     - [AccessRights](#users.AccessRights)
@@ -614,6 +616,36 @@ This file has messages for describing applications
 
 
 
+<a name="users.Applications"></a>
+
+### Applications
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| applications | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="users.AvailableAppsListOptions"></a>
+
+### AvailableAppsListOptions
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| account_id | [AccountId](#users.AccountId) |  |  |
+
+
+
+
+
+
 <a name="users.RightsListOptions"></a>
 
 ### RightsListOptions
@@ -623,7 +655,6 @@ This file has messages for describing applications
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | app_id | [apps.AppId](#apps.AppId) |  |  |
-| account_id | [AccountId](#users.AccountId) |  |  |
 
 
 
@@ -662,6 +693,7 @@ Service for handling access rights
 | Delete | [AccessRuleId](#users.AccessRuleId) | [.common.EmptyMessage](#common.EmptyMessage) |  |
 | Get | [AccessRuleId](#users.AccessRuleId) | [AccessRuleInfo](#users.AccessRuleInfo) |  |
 | List | [RightsListOptions](#users.RightsListOptions) | [AccessRuleInfo](#users.AccessRuleInfo) stream |  |
+| ListAvailableApps | [AvailableAppsListOptions](#users.AvailableAppsListOptions) | [Applications](#users.Applications) stream |  |
 | CheckRight | [AccessRightRequest](#users.AccessRightRequest) | [.common.EmptyMessage](#common.EmptyMessage) |  |
 
  
@@ -857,6 +889,7 @@ Service for handling accounts
 | SelfGet | [AccountId](#users.AccountId) | [FullAccountInfo](#users.FullAccountInfo) | Use to get yourself by ID |
 | List | [AccountsListOptions](#users.AccountsListOptions) | [AccountInfo](#users.AccountInfo) stream | List Accounts |
 | AddAppToUser | [.apps.AppId](#apps.AppId) | [.common.EmptyMessage](#common.EmptyMessage) | Add an app to the user app list |
+| InitAddAppToUser | [.apps.AppId](#apps.AppId) | [.common.EmptyMessage](#common.EmptyMessage) |  |
 | GetAppsFromUser | [AccountId](#users.AccountId) | [AccountsApps](#users.AccountsApps) |  |
 
 
