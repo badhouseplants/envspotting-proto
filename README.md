@@ -624,7 +624,7 @@ This file has messages for describing applications
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| applications | [string](#string) |  |  |
+| application_id | [apps.AppId](#apps.AppId) |  |  |
 
 
 
