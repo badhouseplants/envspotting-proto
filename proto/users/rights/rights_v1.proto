@@ -58,7 +58,7 @@ message RightsListOptions {
 }
 
 message Applications {
-  string applications = 1;
+  apps.AppId application_id = 1;
 }
 
 message AvailableAppsListOptions {
