@@ -56,6 +56,7 @@
     - [AccountInfo](#users.AccountInfo)
     - [AccountInfoWithSensitive](#users.AccountInfoWithSensitive)
     - [AccountName](#users.AccountName)
+    - [AccountsApps](#users.AccountsApps)
     - [AccountsListOptions](#users.AccountsListOptions)
     - [FullAccountInfo](#users.FullAccountInfo)
     - [GitlabToken](#users.GitlabToken)
@@ -622,6 +623,7 @@ This file has messages for describing applications
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | app_id | [apps.AppId](#apps.AppId) |  |  |
+| account_id | [AccountId](#users.AccountId) |  |  |
 
 
 
@@ -753,6 +755,22 @@ Represents username only
 
 
 
+<a name="users.AccountsApps"></a>
+
+### AccountsApps
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  |  |
+| apps | [string](#string) | repeated |  |
+
+
+
+
+
+
 <a name="users.AccountsListOptions"></a>
 
 ### AccountsListOptions
@@ -839,6 +857,7 @@ Service for handling accounts
 | SelfGet | [AccountId](#users.AccountId) | [FullAccountInfo](#users.FullAccountInfo) | Use to get yourself by ID |
 | List | [AccountsListOptions](#users.AccountsListOptions) | [AccountInfo](#users.AccountInfo) stream | List Accounts |
 | AddAppToUser | [.apps.AppId](#apps.AppId) | [.common.EmptyMessage](#common.EmptyMessage) | Add an app to the user app list |
+| GetAppsFromUser | [AccountId](#users.AccountId) | [AccountsApps](#users.AccountsApps) |  |
 
 
 <a name="users.Tokens"></a>
