@@ -3,6 +3,7 @@ syntax = "proto3";
 package users;
 import "apps/applications/applications_v1.proto";
 import "common/common_v1.proto";
+import "users/accounts/accounts_v1.proto";
 option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users/rights";
 
 /**
@@ -53,4 +54,5 @@ message AccessRightRequest {
 
 message RightsListOptions { 
   apps.AppId app_id = 1;
+  users.AccountId account_id =  2;
 }

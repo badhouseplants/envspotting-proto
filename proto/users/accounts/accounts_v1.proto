@@ -22,6 +22,7 @@ service Accounts {
   rpc List(AccountsListOptions) returns (stream AccountInfo) {}
   /// Add an app to the user app list
   rpc AddAppToUser(apps.AppId) returns (common.EmptyMessage) {}
+  rpc GetAppsFromUser(AccountId) returns (AccountsApps) {}
 }
 
 service Tokens {
@@ -86,4 +87,9 @@ message AccountsListOptions {
 
 message GitlabToken  {
   string gitlab_token = 1; // Gitlab token
+}
+
+message AccountsApps { 
+  string user_id = 1;
+  repeated string apps = 2;
 }
