@@ -22,6 +22,7 @@ service Accounts {
   rpc List(AccountsListOptions) returns (stream AccountInfo) {}
   /// Add an app to the user app list
   rpc AddAppToUser(apps.AppId) returns (common.EmptyMessage) {}
+  rpc InitAddAppToUser(apps.AppId) returns (common.EmptyMessage) {}
   rpc GetAppsFromUser(AccountId) returns (AccountsApps) {}
 }
 
