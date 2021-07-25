@@ -28,7 +28,7 @@ service Accounts {
 
 service Tokens {
   // Use to get gitlab token
-  rpc GetGitlabTokenByAccountID(AccountId) returns (GitlabToken) {}
+  rpc GetGitlabTokenByAccountID(AccountId) returns (AccountGitlabToken) {}
 }
 
 /**
@@ -86,7 +86,7 @@ message AccountsListOptions {
   common.Paging paging = 2;
 }
 
-message GitlabToken  {
+message AccountGitlabToken  {
   string gitlab_token = 1; // Gitlab token
 }
 
