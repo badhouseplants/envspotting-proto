@@ -54,6 +54,7 @@
   
 - [users/accounts/accounts_v1.proto](#users/accounts/accounts_v1.proto)
     - [AccountCreds](#users.AccountCreds)
+    - [AccountGitlabToken](#users.AccountGitlabToken)
     - [AccountId](#users.AccountId)
     - [AccountInfo](#users.AccountInfo)
     - [AccountInfoWithSensitive](#users.AccountInfoWithSensitive)
@@ -61,7 +62,6 @@
     - [AccountsApps](#users.AccountsApps)
     - [AccountsListOptions](#users.AccountsListOptions)
     - [FullAccountInfo](#users.FullAccountInfo)
-    - [GitlabToken](#users.GitlabToken)
     - [PasswordUpdate](#users.PasswordUpdate)
   
     - [Accounts](#users.Accounts)
@@ -723,6 +723,21 @@ Represents credentials (username and password)
 
 
 
+<a name="users.AccountGitlabToken"></a>
+
+### AccountGitlabToken
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| gitlab_token | [string](#string) |  | Gitlab token |
+
+
+
+
+
+
 <a name="users.AccountId"></a>
 
 ### AccountId
@@ -836,21 +851,6 @@ Represents username only
 
 
 
-<a name="users.GitlabToken"></a>
-
-### GitlabToken
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| gitlab_token | [string](#string) |  | Gitlab token |
-
-
-
-
-
-
 <a name="users.PasswordUpdate"></a>
 
 ### PasswordUpdate
@@ -900,7 +900,7 @@ Service for handling accounts
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetGitlabTokenByAccountID | [AccountId](#users.AccountId) | [GitlabToken](#users.GitlabToken) | Use to get gitlab token |
+| GetGitlabTokenByAccountID | [AccountId](#users.AccountId) | [AccountGitlabToken](#users.AccountGitlabToken) | Use to get gitlab token |
 
  
 
