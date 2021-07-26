@@ -1,9 +1,9 @@
-/// This file has messages for describing authentication
+/// Messages for describing authentication
 syntax = "proto3";
 package users;
-option go_package = "github.com/allanger/gitlab-environment-aggregator/models/users/authentication";
-import "common/common.v1.proto";
-import "users/accounts/accounts.v1.proto";
+import "common/common_v1.proto";
+import "users/accounts/accounts_v1.proto";
+option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users/authentication";
 
 /**
  * Service for handling authentication
