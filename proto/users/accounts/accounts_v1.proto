@@ -1,0 +1,96 @@
+/// This file has messages for describing authentication
+syntax = "proto3";
+package users;
+import "apps/applications/applications_v1.proto";
+import "common/common_v1.proto";
+option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users/accounts";
+
+/**
+ * Service for handling accounts
+ */
+service Accounts {  
+  /// Use to create a Account
+  rpc Create(AccountCreds) returns (AccountInfo) {}
+  /// Use to update a Account
+  rpc UpdateUser(FullAccountInfo) returns (FullAccountInfo) {}
+  rpc UpdatePassword(PasswordUpdate) returns (common.EmptyMessage) {}
+  /// Use to get a Account by ID
+  rpc Get(AccountId) returns (AccountInfo) {}
+  /// Use to get yourself by ID
+  rpc SelfGet(AccountId) returns (FullAccountInfo) {}
+  /// List Accounts
+  rpc List(AccountsListOptions) returns (stream AccountInfo) {}
+  /// Add an app to the user app list
+  rpc AddAppToUser(apps.AppId) returns (common.EmptyMessage) {}
+  rpc InitAddAppToUser(apps.AppId) returns (common.EmptyMessage) {}
+  rpc GetAppsFromUser(AccountId) returns (AccountsApps) {}
+}
+
+service Tokens {
+  // Use to get gitlab token
+  rpc GetGitlabTokenByAccountID(AccountId) returns (AccountGitlabToken) {}
+}
+
+/**
+ * Represents credentials (username and password)
+*/
+message AccountCreds { 
+  string username = 1; // username: unix-like
+  string password = 2; // Password
+}
+
+/**
+ * Represents Account ID only
+*/
+message AccountId {
+  string id = 1; // UUID
+}
+
+/**
+ * Represents username only
+*/
+message AccountName {
+  string username = 1; // username
+}
+
+/**
+ * Represents the Account without sensitive data
+ */
+message AccountInfo {
+  string id = 1; // UUID
+  string username = 2; // username: unix-like
+}
+
+message FullAccountInfo {
+  string id = 1; // UUID
+  string username = 2; // username: unix-like
+  string gitlab_token = 3;
+}
+
+message AccountInfoWithSensitive { 
+  string id = 1; // UUID
+  string username = 2; // username: unix-like
+  string password = 3; // Password
+  string gitlab_token = 4;
+}
+
+message PasswordUpdate {
+  string id = 1;
+  string username = 2;
+  string old_password = 3;
+  string new_password = 4;
+}
+
+message AccountsListOptions { 
+  AccountName account_name = 1;
+  common.Paging paging = 2;
+}
+
+message AccountGitlabToken  {
+  string gitlab_token = 1; // Gitlab token
+}
+
+message AccountsApps { 
+  string user_id = 1;
+  repeated string apps = 2;
+}

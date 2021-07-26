@@ -1,0 +1,66 @@
+/// This file has messages for describing applications
+syntax = "proto3";
+package users;
+import "apps/applications/applications_v1.proto";
+import "common/common_v1.proto";
+import "users/accounts/accounts_v1.proto";
+option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users/rights";
+
+/**
+ * Service for handling access rights
+ */
+service Rights {  
+  rpc Init(AccessRuleWithoutId) returns (AccessRuleInfo) {}
+  rpc Create(AccessRuleWithoutId) returns (AccessRuleInfo) {}
+  rpc Update(AccessRuleIdAndRight) returns (AccessRuleIdAndRight) {}
+  rpc Delete(AccessRuleId) returns (common.EmptyMessage) {}
+  rpc Get(AccessRuleId) returns (AccessRuleInfo) {}
+  rpc List(RightsListOptions) returns (stream AccessRuleInfo) {}
+  rpc ListAvailableApps(AvailableAppsListOptions) returns (stream Applications) {}
+  rpc CheckRight(AccessRightRequest) returns (common.EmptyMessage) {}
+}
+
+enum AccessRights { 
+  ACCESS_RIGHTS_READ_UNSPECIFIED = 0;
+  ACCESS_RIGHTS_WRITE = 1;
+  ACCESS_RIGHTS_DELETE = 2;
+}
+
+message AccessRuleId { 
+  string id = 1;
+}
+
+message AccessRuleIdAndRight { 
+  string id = 1;
+  AccessRights access_right = 3;
+}
+
+message AccessRuleWithoutId {
+  string user_id = 1;
+  string application_id = 2;
+  AccessRights access_right = 3;
+}
+
+message AccessRuleInfo {
+  string id = 1;
+  string user_id = 2;
+  string application_id = 3;
+  AccessRights access_right = 4;
+}
+
+message AccessRightRequest { 
+  apps.AppId application_id = 1;
+  AccessRights access_right = 2;
+}
+
+message RightsListOptions { 
+  apps.AppId app_id = 1;
+}
+
+message Applications {
+  apps.AppId application_id = 1;
+}
+
+message AvailableAppsListOptions {
+  users.AccountId account_id =  1;
+}

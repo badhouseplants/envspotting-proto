@@ -1,8 +1,8 @@
 /// This file has messages for describing contours
 syntax = "proto3";
 package apps;
-option go_package = "github.com/allanger/gitlab-environment-aggregator/models/apps/contours";
-import "common/common.v1.proto";
+import "common/common_v1.proto";
+option go_package = "github.com/badhouseplants/envspotting-go-proto/models/apps/contours";
 
 /**
  * Service for handling contours
@@ -32,25 +32,26 @@ message ContourId {
 }
 
 message ContoursListOption { 
-  string appId = 1; // Applcation ID: UUID
+  string app_id = 1; // Applcation ID: UUID
 }
 
 message ContourIdAndName { 
   string id = 1; // UUID
   string name = 2; // Contour name: Unique string
-  string appId = 3; // Applcation ID: UUID
+  string app_id = 3; // Applcation ID: UUID
 }
 
 message ContourInfoWithoutServices {
   string id = 1;
   string name = 2; 
   string description = 3;
+  string app_id = 4; // Applcation ID: UUID
 }
 
 message ContourNameAndDescription { 
   string name = 1; 
   string description = 2;
-  string appId = 3; // Applcation ID: UUID
+  string app_id = 3; // Applcation ID: UUID
 }
 
 /**
@@ -61,7 +62,7 @@ message ContourInfo {
   string name = 2; // Contour name: Unique string
   string description = 3;
   repeated ServiceInfo services = 4; // Array of maps <projectID:environmentID>
-  string appId = 5; // Applcation ID: UUID
+  string app_id = 5; // Applcation ID: UUID
 }
 
 /**
@@ -82,21 +83,24 @@ message ServiceInfo {
 }
 
 message ServiceIdAndContourId { 
-  string contourId = 1;
-  string serviceId = 2;
+  string contour_id = 1;
+  string service_id = 2;
+  string app_id = 3; // Applcation ID: UUID
 }
 /**
  * Represents an array of services
 */
 message RepeatedServiceWithoutId { 
-  string contourId = 1;
-  repeated ServiceWithoutId service = 2;
+  string contour_id = 1;
+  repeated ServiceWithoutId services = 2;
+  string app_id = 3; // Applcation ID: UUID
 }
 
 /**
  * Represents an array of services
 */
 message RepeatedServiceWithId { 
-  string contourId = 1;
-  repeated ServiceInfo service = 2;
+  string contour_id = 1;
+  repeated ServiceInfo services = 2;
+  string app_id = 3; // Applcation ID: UUID
 }

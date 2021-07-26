@@ -1,0 +1,18 @@
+/// This file has messages for describing authorization
+syntax = "proto3";
+package users;
+import "common/common_v1.proto";
+import "users/accounts/accounts_v1.proto";
+option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users/authorization";
+
+/**
+ * Service for handling authorization
+ */
+service Authorization {  
+  /// Use to refresh access token
+  rpc RefreshToken(common.EmptyMessage) returns (common.EmptyMessage) {}
+  /// Use To validate jwt token
+  rpc ValidateToken(common.EmptyMessage) returns (common.EmptyMessage) {}
+  /// Use to parse user ID from token
+  rpc ParseIdFromToken(common.EmptyMessage) returns (users.AccountId) {}
+}
