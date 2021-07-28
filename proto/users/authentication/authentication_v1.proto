@@ -1,7 +1,6 @@
 /// Messages for describing authentication
 syntax = "proto3";
 package users;
-import "common/common_v1.proto";
 import "users/accounts/accounts_v1.proto";
 option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users/authentication";
 
@@ -10,7 +9,7 @@ option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users
  */
 service Authentication {  
   /// Use to sign in
-  rpc SignIn(AccountCreds) returns (common.EmptyMessage) {}
+  rpc SignIn(AccountCreds) returns (AccountId) {}
   /// Use to sign up
-  rpc SignUp(AccountCreds) returns (common.EmptyMessage) {}
+  rpc SignUp(AccountCreds) returns (AccountId) {}
 }
