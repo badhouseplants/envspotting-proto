@@ -10,7 +10,7 @@ option go_package = "github.com/badhouseplants/envspotting-go-proto/models/users
  */
 service Authorization {  
   /// Use to refresh access token
-  rpc RefreshToken(common.EmptyMessage) returns (common.EmptyMessage) {}
+  rpc RefreshToken(users.AccountId) returns (common.EmptyMessage) {}
   /// Use To validate jwt token
   rpc ValidateToken(common.EmptyMessage) returns (common.EmptyMessage) {}
   /// Use to parse user ID from token
